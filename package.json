@@ -8,6 +8,8 @@
 	},
 	"devDependencies": {
 		"@types/node": "^16.7.10",
+		"@vitejs/plugin-vue": "^1.6.0",
+		"@vue/compiler-sfc": "^3.2.8",
 		"@vuedx/typecheck": "^0.7.4",
 		"@vuedx/typescript-plugin-vue": "^0.7.4",
 		"chalk": "^4.1.2",
@@ -15,5 +17,8 @@
 		"yorkie": "^2.0.0"
 	},
 	"dependencies": {
+		"tailwindcss": "^2.2.9",
+		"vite": "^2.5.3",
+		"vue": "^3.2.8"
 	}
 }
