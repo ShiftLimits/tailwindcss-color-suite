@@ -11,6 +11,7 @@
 		"@vuedx/typecheck": "^0.7.4",
 		"@vuedx/typescript-plugin-vue": "^0.7.4",
 		"chalk": "^4.1.2",
+		"tsup": "^4.14.0",
 		"yorkie": "^2.0.0"
 	},
 	"dependencies": {
