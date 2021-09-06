@@ -46,6 +46,29 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
       // Returns the current color config object
       if (id === COLOR_CONFIG_ID) return `export default ${ JSON.stringify(color_config) }`
     },
+    transformIndexHtml(html) {
+      return {
+        html,
+        tags: [
 
+          // Add script to `head` that loads the editor application entry point
+          {
+            injectTo: 'head',
+            tag: 'script',
+            attrs: {
+              type: 'module',
+              src: COLOR_SUITE_PATH
+            }
+          },
+
+          // Add root `div` to the `body` so the editor application can be embedded
+          {
+            injectTo: 'body-prepend',
+            tag: 'div',
+            attrs: { id: EDITOR_APP_MOUNT_ID }
+          }
+        ]
+      }
+    }
 	}
 }
