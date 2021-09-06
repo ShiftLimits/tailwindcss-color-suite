@@ -8,4 +8,18 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  build: {
+    lib: {
+      entry: './src/app.main.ts',
+      name: 'ColorSuiteEditorApp',
+      formats: ['es']
+    },
+    rollupOptions: {
+      output: {
+        dir: './dist/app.main',
+        entryFileNames: 'index.js'
+      },
+      external: ['vue', '@tailwindcss-color-suite/color/config'],
+    }
+  }
 })
