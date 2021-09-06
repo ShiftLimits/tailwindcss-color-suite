@@ -20,6 +20,7 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
     } else try {
       // Color config file doesn't exist so we can try to make a new one
       writeFileSync(color_config_path, `module.exports = ${ inspect(DEFAULT_COLOR_CONFIG) }`)
+      color_config = DEFAULT_COLOR_CONFIG
     } catch(e) {
       console.error(e)
       throw new Error(`[Color Suite] Unable to create the color config file at '${ color_config_path}'.`)
