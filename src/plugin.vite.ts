@@ -1,7 +1,8 @@
 import { Plugin } from 'vite'
 import { ColorSuiteConfig } from './types'
-import { COLOR_SUITE_PATH, COLOR_CONFIG_ID, DEFAULT_COLOR_CONFIG, DEFAULT_COLOR_CONFIG_FILE, EDITOR_APP_MOUNT_ID } from './constants';
+import { COLOR_SUITE_PATH, COLOR_CONFIG_ID, DEFAULT_COLOR_CONFIG, EDITOR_APP_MOUNT_ID } from './constants';
 import { writeFileSync, existsSync } from 'fs'
+import { inspect } from 'util'
 import { join } from 'path'
 
 export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
@@ -19,7 +20,7 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
       throw new Error(`[Color Suite] A color config file exists at '${ color_config_path}' but it could not be required.`)
     } else try {
       // Color config file doesn't exist so we can try to make a new one
-      writeFileSync(color_config_path, JSON.stringify(DEFAULT_COLOR_CONFIG_FILE))
+      writeFileSync(color_config_path, `module.exports = ${ inspect(DEFAULT_COLOR_CONFIG) }`)
     } catch(e) {
       console.error(e)
       throw new Error(`[Color Suite] Unable to create the color config file at '${ color_config_path}'.`)

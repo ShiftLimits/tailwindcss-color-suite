@@ -17,4 +17,3 @@ export const DEFAULT_COLOR_CONFIG = {
 	colors: {},
 	settings: {}
 }
-export const DEFAULT_COLOR_CONFIG_FILE = `module.exports = ${ JSON.stringify(DEFAULT_COLOR_CONFIG)}`
