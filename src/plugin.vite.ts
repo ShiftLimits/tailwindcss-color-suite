@@ -6,7 +6,7 @@ import { inspect } from 'util'
 import { join } from 'path'
 
 export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
-  let { config } = Object.assign(options, { config: 'colors.config.json' })
+  let { config } = Object.assign(options, { config: 'colors.config.js' })
 
   let color_config_path = join(process.cwd(), config)
   let color_config:ColorSuiteConfig
