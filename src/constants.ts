@@ -1,3 +1,4 @@
+import { ColorSuiteConfig } from './types';
 export const EDITOR_APP_MOUNT_ID = '__cs-app'
 
 export const COLOR_SUITE_ID = '@tailwindcss-color-suite'
@@ -13,7 +14,12 @@ export const COLOR_UPDATE_PATH = `/${COLOR_SUITE_ID}/color/update`
 export const COLOR_DELETE_PATH = `/${COLOR_SUITE_ID}/color/delete`
 
 // Default config file
-export const DEFAULT_COLOR_CONFIG = {
-	colors: {},
-	settings: {}
+export const DEFAULT_COLOR_CONFIG:ColorSuiteConfig = {
+	colors: [],
+	settings: {
+		open_button: true,
+		float_panel: false,
+		include_current: true,
+		include_transparent: true
+	}
 }
