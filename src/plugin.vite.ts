@@ -12,7 +12,6 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
   let color_config:ColorSuiteConfig
   try {
     color_config = require(color_config_path)
-    color_config = Object.assign(color_config, DEFAULT_COLOR_CONFIG)
   } catch(e) {
     // There was a problem requiring the color config
     if (existsSync(color_config_path)) {
@@ -26,6 +25,9 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
       throw new Error(`[Color Suite] Unable to create the color config file at '${ color_config_path}'.`)
     }
   }
+
+  if (!color_config || typeof color_config != "object") throw new Error(`[Color Suite] The color config does not export an object.`)
+  color_config = Object.assign(color_config, DEFAULT_COLOR_CONFIG)
 
 	return {
 		name: 'tailwindcss-color-suite',
