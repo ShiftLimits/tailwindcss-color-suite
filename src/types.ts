@@ -19,6 +19,6 @@ export interface ColorSuiteSettings {
 }
 
 export interface ColorSuiteConfig {
-	palette: CSColor[],
+	colors: CSColor[],
 	settings: ColorSuiteSettings
 }
