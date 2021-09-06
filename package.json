@@ -3,6 +3,9 @@
 	"version": "0.3.0",
 	"author": "Jeff Schofield <jeff@jeffschofield.com>",
 	"license": "MIT",
+	"scripts": {
+		"dev": "vite"
+	},
 	"gitHooks": {
 		"commit-msg": "node scripts/verifyCommit.js"
 	},
