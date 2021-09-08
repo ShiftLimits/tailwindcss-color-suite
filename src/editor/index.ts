@@ -8,6 +8,8 @@ import { createSettingsService } from './services/settings'
 import SvgIcon from './components/SvgIcon.vue'
 import AbstractButton from './components/AbstractButton.vue'
 import ButtonTab from './components/ButtonTab.vue'
+import ButtonGhost from './components/ButtonGhost.vue'
+
 export function createColorSuiteApp() {
 	const app = createApp(App)
 
@@ -23,6 +25,7 @@ export function createColorSuiteApp() {
 	app.component('svg-icon', SvgIcon)
 	app.component('abstract-button', AbstractButton)
 	app.component('button-tab', ButtonTab)
+	app.component('button-ghost', ButtonGhost)
 
 	return { app, router }
 }
