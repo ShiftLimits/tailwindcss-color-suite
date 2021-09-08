@@ -16,3 +16,17 @@
   background-size: 8px 8px;
   background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
 }
+
+@layer utilities {
+	.__cs-rounded-group > :first-child {
+		border-top-right-radius: 0 !important;
+		border-bottom-right-radius: 0 !important;
+	}
+	.__cs-rounded-group > :last-child {
+		border-top-left-radius: 0 !important;
+		border-bottom-left-radius: 0 !important;
+	}
+	.__cs-rounded-group > *:not(:first-child):not(:last-child) {
+		border-radius: 0 !important;
+	}
+}
