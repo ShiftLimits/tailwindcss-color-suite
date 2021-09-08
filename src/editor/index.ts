@@ -11,6 +11,7 @@ import ButtonTab from './components/ButtonTab.vue'
 import ButtonGhost from './components/ButtonGhost.vue'
 import ButtonNeutral from './components/ButtonNeutral.vue'
 import ButtonBlue from './components/ButtonBlue.vue'
+import Toggle from './components/Toggle.vue'
 
 export function createColorSuiteApp() {
 	const app = createApp(App)
@@ -30,6 +31,7 @@ export function createColorSuiteApp() {
 	app.component('button-ghost', ButtonGhost)
 	app.component('button-neutral', ButtonNeutral)
 	app.component('button-blue', ButtonBlue)
+	app.component('toggle', Toggle)
 
 	return { app, router }
 }
