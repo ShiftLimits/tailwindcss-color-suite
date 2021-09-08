@@ -5,6 +5,7 @@ import { createKeyboardService } from './services/keyboard'
 import { createSettingsService } from './services/settings'
 
 import SvgIcon from './components/SvgIcon.vue'
+import AbstractButton from './components/AbstractButton.vue'
 export function createColorSuiteApp() {
 	const app = createApp(App)
 
@@ -15,5 +16,5 @@ export function createColorSuiteApp() {
 	app.use(settings_service)
 
 	app.component('svg-icon', SvgIcon)
-	return { app }
+	app.component('abstract-button', AbstractButton)
 }
