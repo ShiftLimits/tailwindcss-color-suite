@@ -9,6 +9,8 @@ import SvgIcon from './components/SvgIcon.vue'
 import AbstractButton from './components/AbstractButton.vue'
 import ButtonTab from './components/ButtonTab.vue'
 import ButtonGhost from './components/ButtonGhost.vue'
+import ButtonNeutral from './components/ButtonNeutral.vue'
+import ButtonBlue from './components/ButtonBlue.vue'
 
 export function createColorSuiteApp() {
 	const app = createApp(App)
@@ -26,6 +28,8 @@ export function createColorSuiteApp() {
 	app.component('abstract-button', AbstractButton)
 	app.component('button-tab', ButtonTab)
 	app.component('button-ghost', ButtonGhost)
+	app.component('button-neutral', ButtonNeutral)
+	app.component('button-blue', ButtonBlue)
 
 	return { app, router }
 }
