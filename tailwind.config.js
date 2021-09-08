@@ -30,6 +30,7 @@ module.exports = {
         'out-brisk': 'cubic-bezier(.15,0,0,1)'
       },
       zIndex: {
+        'bg': -1,
         'under-panel': csZ(40),
         'panel': csZ(50),
         'over-panel': csZ(60),
