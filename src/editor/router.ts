@@ -2,6 +2,8 @@ import { createRouter as createVueRouter, createMemoryHistory, RouteRecordRaw } 
 
 export function createRouter() {
 	const routes:RouteRecordRaw[] = [
+		{ path: '/', redirect: '/colors' },
+		{ path: '/colors', component: () => import('./views/colors.vue'), name: 'colors' },
 	]
 
 	const history = createMemoryHistory()
