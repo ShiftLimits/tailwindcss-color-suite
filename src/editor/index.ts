@@ -6,4 +6,5 @@ export function createColorSuiteApp() {
 	const app = createApp(App)
 
 	app.component('svg-icon', SvgIcon)
+	return { app }
 }
