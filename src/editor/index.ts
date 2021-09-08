@@ -19,4 +19,6 @@ export function createColorSuiteApp() {
 	app.component('svg-icon', SvgIcon)
 	app.component('abstract-button', AbstractButton)
 	app.component('button-tab', ButtonTab)
+
+	return { app }
 }
