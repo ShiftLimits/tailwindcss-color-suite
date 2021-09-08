@@ -25,6 +25,7 @@
 	"dependencies": {
 		"tailwindcss": "^2.2.9",
 		"vite": "^2.5.3",
-		"vue": "^3.2.8"
+		"vue": "^3.2.8",
+		"vue-router": "^4.0.11"
 	}
 }
