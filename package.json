@@ -19,6 +19,7 @@
 		"chalk": "^4.1.2",
 		"postcss": "^8.3.6",
 		"tsup": "^4.14.0",
+		"vite-plugin-svg-icons": "^1.0.4",
 		"yorkie": "^2.0.0"
 	},
 	"dependencies": {
