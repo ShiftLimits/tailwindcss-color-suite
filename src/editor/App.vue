@@ -97,7 +97,7 @@
 				original_cursor = document.body.style.cursor
 				document.body.style.cursor = 'ew-resize'
 
-				let { x, y } = resize_handle.value.getBoundingClientRect()
+				let { x, y } = resize_handle.value!.getBoundingClientRect()
 				cursor_offset = [e.clientX - x, e.clientY - y]
 
 				document.addEventListener('pointermove', pointerMove)
