@@ -29,4 +29,8 @@
 	.__cs-rounded-group > *:not(:first-child):not(:last-child) {
 		border-radius: 0 !important;
 	}
+
+	.__cs-border-group > *:not(:last-child) {
+		border-right: 0 !important;
+	}
 }
