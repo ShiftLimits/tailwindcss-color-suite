@@ -25,6 +25,10 @@ module.exports = {
           '2000': '2000ms',
           '3000': '3000ms'
       },
+      transitionTimingFunction: {
+        'in-brisk': 'cubic-bezier(1,0,.85,1)',
+        'out-brisk': 'cubic-bezier(.15,0,0,1)'
+      },
       zIndex: {
         'under-panel': csZ(40),
         'panel': csZ(50),
