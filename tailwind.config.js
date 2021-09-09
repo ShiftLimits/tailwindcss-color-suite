@@ -1,6 +1,6 @@
 const colors = require('tailwindcss/colors')
 function csZ(index) {
-  return 99999 + index
+  return 99000 + index
 }
 
 module.exports = {
