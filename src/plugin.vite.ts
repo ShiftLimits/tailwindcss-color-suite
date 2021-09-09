@@ -1,6 +1,7 @@
 import { Plugin } from 'vite'
 import { ColorSuiteConfig } from './types'
-import { COLOR_SUITE_PATH, COLOR_CONFIG_ID, DEFAULT_COLOR_CONFIG, EDITOR_APP_MOUNT_ID } from './constants';
+import { COLOR_SUITE_PATH, COLOR_CONFIG_ID, DEFAULT_COLOR_CONFIG, EDITOR_APP_MOUNT_ID, SETTINGS_CONFIG_ID, COLOR_SUITE_ID } from './constants';
+import { createColorSuiteServer } from './server/index'
 import { writeFileSync, existsSync } from 'fs'
 import { inspect } from 'util'
 import { join } from 'path'
