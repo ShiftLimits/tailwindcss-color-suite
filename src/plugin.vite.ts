@@ -39,6 +39,9 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
 
       // Virtual Import: @tailwindcss-color-suite/color/config
       if (id == COLOR_CONFIG_ID) return COLOR_CONFIG_ID
+
+      // Virtual Import: @tailwindcss-color-suite/settings/config
+      if (id == SETTINGS_CONFIG_ID) return SETTINGS_CONFIG_ID
     },
     load(id) {
       // Virtual File: /@tailwindcss-color-suite
@@ -48,6 +51,10 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
       // Virtual Import: @tailwindcss-color-suite/color/config
       // Returns the current color config object
       if (id === COLOR_CONFIG_ID) return `export default ${ JSON.stringify(color_config) }`
+
+      // Virtual Import: @tailwindcss-color-suite/settings/config
+      // Returns the current settings config object
+      if (id === SETTINGS_CONFIG_ID) return `export default ${ JSON.stringify(color_config.settings) }`
     },
     transformIndexHtml(html) {
       return {
