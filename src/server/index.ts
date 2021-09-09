@@ -5,6 +5,7 @@ import { json } from 'body-parser'
 import { join } from 'path'
 import { promises as fs } from 'fs'
 import { COLOR_CREATE_PATH, SETTINGS_UPDATE_PATH, COLOR_CONFIG_ID, SETTINGS_CONFIG_ID } from '../constants';
+import { UpdateSettingsForm } from '../editor/services/settings'
 import { inspect } from 'util'
 
 const bodyParser = json()
@@ -47,6 +48,20 @@ export function createColorSuiteServer(server:ViteDevServer, color_config:ColorS
 	// Settings Endpoints
 
 	// Update Settings
+	server.middlewares.use(SETTINGS_UPDATE_PATH, async (req, res, next) => {
+		try {
+			const body = await parseBody<UpdateSettingsForm>(req, res)
+			if (!body || Object.keys(body).length == 0) throw new Error('No data provided.')
+
+			Object.assign(color_config.settings, body)
+			await saveConfig()
+
+			res.setHeader('Content-Type', 'application/json')
+			res.end(JSON.stringify({ success: true }))
+		} catch(e) {
+			next(e)
+		}
+	})
 
 	// ---
 	//
