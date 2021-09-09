@@ -3,6 +3,8 @@ import vue from '@vitejs/plugin-vue'
 import viteSvgIcons from 'vite-plugin-svg-icons'
 import { resolve } from 'path'
 
+import { colorSuiteDevPlugin } from './src/dev'
+
 export default defineConfig({
   server: {
     port: 5080
@@ -11,7 +13,8 @@ export default defineConfig({
     vue(),
     viteSvgIcons({
       iconDirs: [resolve(process.cwd(), 'src/editor/assets/icons')]
-    })
+    }),
+    colorSuiteDevPlugin()
   ],
   build: {
     lib: {
