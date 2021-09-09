@@ -8,10 +8,16 @@ export const COLOR_SUITE_PATH = `/${COLOR_SUITE_ID}`
 export const COLOR_CONFIG_ID = `${COLOR_SUITE_ID}/color/config`
 export const COLOR_CONFIG_PATH = `/${COLOR_CONFIG_ID}`
 
-// Server end points for mutations on the color config
+// Settings config
+export const SETTINGS_CONFIG_ID = `${COLOR_SUITE_ID}/settings/config`
+export const SETTINGS_CONFIG_PATH = `/${SETTINGS_CONFIG_ID}`
+
+// Server end points for mutations on config
 export const COLOR_CREATE_PATH = `/${COLOR_SUITE_ID}/color/create`
 export const COLOR_UPDATE_PATH = `/${COLOR_SUITE_ID}/color/update`
 export const COLOR_DELETE_PATH = `/${COLOR_SUITE_ID}/color/delete`
+
+export const SETTINGS_UPDATE_PATH = `/${COLOR_SUITE_ID}/settings/update`
 
 // Default config file
 export const DEFAULT_COLOR_CONFIG:ColorSuiteConfig = {
