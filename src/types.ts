@@ -18,7 +18,9 @@ export interface ColorSuiteSettings {
 	include_current:boolean
 }
 
+export type ColorSuiteColors = CSColor[]
+
 export interface ColorSuiteConfig {
-	colors: CSColor[],
+	colors: ColorSuiteColors,
 	settings: ColorSuiteSettings
 }
