@@ -33,6 +33,9 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
 	return {
 		name: 'tailwindcss-color-suite',
     apply: 'serve',
+    configureServer: server => {
+      return createColorSuiteServer(server, color_config, color_config_path)
+    },
 		resolveId(id) {
       // Virtual File: /@tailwindcss-color-suite
       if (id == COLOR_SUITE_PATH) return COLOR_SUITE_PATH
