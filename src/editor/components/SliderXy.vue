@@ -3,8 +3,10 @@
 		<div ref="plane" class="__cs-relative __cs-w-full __cs-h-full __cs-z-50">
 			<div class="__cs-absolute __cs-transform __cs--translate-x-1/2 __cs--translate-y-1/2 __cs-top-0 __cs-left-0" :style="`left: ${ point.x * 100 }% !important; top: ${ point.y * 100 }% !important;`">
 				<slot name="handle">
-					<div class="__cs-w-5 __cs-h-5 __cs-border-2 __cs-border-black __cs-rounded-full"></div>
-					<div class="__cs-w-4 __cs-h-4 __cs-border __cs-border-white __cs-rounded-full __cs-absolute __cs-left-1/2 __cs-top-1/2 __cs-transform __cs--translate-x-1/2 __cs--translate-y-1/2"></div>
+					<svg viewBox="0 0 1 1" class="__cs-w-5 __cs-h-5">
+						<circle cx="0.5" cy="0.5" r="0.4" stroke-width="0.1" class="__cs-stroke-black __cs-fill-transparent" />
+						<circle cx="0.5" cy="0.5" r="0.325" stroke-width="0.075" class="__cs-stroke-white __cs-fill-transparent" />
+					</svg>
 				</slot>
 			</div>
 		</div>
