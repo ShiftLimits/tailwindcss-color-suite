@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
+import { createStore } from './store'
 import { createRouter } from './router'
 import { createKeyboardService } from './services/keyboard'
 import { createSettingsService } from './services/settings'
@@ -19,6 +20,9 @@ import SliderXY from './components/SliderXY.vue'
 
 export function createColorSuiteApp() {
 	const app = createApp(App)
+
+	const store = createStore()
+	app.use(store)
 
 	const router = createRouter()
 	app.use(router)
@@ -41,5 +45,5 @@ export function createColorSuiteApp() {
 	app.component('slider', Slider)
 	app.component('slider-xy', SliderXY)
 
-	return { app, router }
+	return { app, store, router }
 }
