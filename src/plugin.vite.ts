@@ -35,6 +35,7 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
 		name: 'tailwindcss-color-suite',
     apply: 'serve',
     configureServer: server => {
+      server.watcher.add(color_config_path)
       return createColorSuiteServer(server, color_config, color_config_path)
     },
 		resolveId(id) {
@@ -59,6 +60,27 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
       // Virtual Import: @tailwindcss-color-suite/settings/config
       // Returns the current settings config object
       if (id === SETTINGS_CONFIG_ID) return `export default ${ JSON.stringify(color_config.settings) }`
+    },
+    handleHotUpdate({ file, server }) {
+      if (file.match(/colors\.config\.js/g)) {
+        delete require.cache[require.resolve(color_config_path)] // invalidate require
+        color_config = require(color_config_path) // re-require
+        color_config = Object.assign(DEFAULT_COLOR_CONFIG, color_config) // make sure we've got all defaults
+
+        let config_module = server.moduleGraph.getModuleById(COLOR_CONFIG_ID)
+        if(config_module) server.moduleGraph.invalidateModule(config_module)
+
+        let settings_module = server.moduleGraph.getModuleById(SETTINGS_CONFIG_ID)
+        if(settings_module) server.moduleGraph.invalidateModule(settings_module)
+
+        server.ws.send({
+          type: 'custom',
+          event: `${ COLOR_SUITE_ID }:config-updated`,
+          data: color_config
+        })
+
+        return []
+      }
     },
     transformIndexHtml(html) {
       return {
