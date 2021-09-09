@@ -50,7 +50,7 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
 
       // Virtual Import: @tailwindcss-color-suite/color/config
       // Returns the current color config object
-      if (id === COLOR_CONFIG_ID) return `export default ${ JSON.stringify(color_config) }`
+      if (id === COLOR_CONFIG_ID) return `export default ${ JSON.stringify(color_config.colors) }`
 
       // Virtual Import: @tailwindcss-color-suite/settings/config
       // Returns the current settings config object
