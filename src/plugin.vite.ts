@@ -28,7 +28,7 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
   }
 
   if (!color_config || typeof color_config != "object") throw new Error(`[Color Suite] The color config does not export an object.`)
-  color_config = Object.assign(color_config, DEFAULT_COLOR_CONFIG)
+  color_config = Object.assign(DEFAULT_COLOR_CONFIG, color_config)
 
 	return {
 		name: 'tailwindcss-color-suite',
