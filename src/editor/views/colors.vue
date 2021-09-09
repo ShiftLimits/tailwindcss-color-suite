@@ -19,7 +19,7 @@
 				</router-link>
 			</template>
 			<color-list-item v-if="settings.include_transparent" color="transparent" token="transparent"></color-list-item>
-			<color-list-item v-if="settings.include_current" color="currentColor" token="currentColor"></color-list-item>
+			<color-list-item v-if="settings.include_current" color="currentColor" token="current"></color-list-item>
 		</div>
 		<div v-else class="__cs-flex-1 __cs-flex __cs-items-center __cs-justify-center __cs-text-gray-600">
 			Your palette is empty.
