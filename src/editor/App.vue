@@ -48,12 +48,12 @@
 				document.body.removeEventListener("transitionend", unsetBodyTransitionClasses)
 			}
 
-			let original_body_padding_left:string
-			let original_body_padding_left_calculated:number
+			let original_body_padding_left:string = 'initial'
+			let original_body_padding_left_calculated:number = 0
 			watch(max_width, () => {
 				if (!settings.float_panel && open.value) document.body.style.paddingLeft = `${original_body_padding_left_calculated + max_width.value}px`
 			})
-			watch(() => settings.float_panel, () => {
+			watch(() => settings.float_panel, (new_value) => {
 				if (settings.float_panel) document.body.style.paddingLeft = original_body_padding_left
 				else if(max_width.value < window.innerWidth) document.body.style.paddingLeft = `${original_body_padding_left_calculated + max_width.value}px`
 			})
