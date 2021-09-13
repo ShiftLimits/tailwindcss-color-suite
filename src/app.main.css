@@ -2,22 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-.__cs-grid-stack {
-	grid-template-columns: 1fr;
-	grid-template-rows: 1fr;
-}
-
-.__cs-grid-stack > * {
-	grid-area: 1 / 1 / 2 / 2;
-}
-
-.__cs-bg-transparency-grid {
-	background-image: linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%);
-  background-size: 8px 8px;
-  background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
-}
 
 @layer utilities {
+	.__cs-grid-stack {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+	}
+
+	.__cs-grid-stack > *, .__cs-grid-stack::before, .__cs-grid-stack::after {
+		grid-area: 1 / 1 / 2 / 2;
+	}
+
+	.__cs-bg-transparency-grid {
+		background-image: linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%);
+		background-size: 8px 8px;
+		background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+	}
+
 	.__cs-rounded-group > :first-child {
 		border-top-right-radius: 0 !important;
 		border-bottom-right-radius: 0 !important;
