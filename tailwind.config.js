@@ -18,6 +18,9 @@ module.exports = {
       },
       fill: (theme) => theme('colors'),
       stroke: (theme) => theme('colors'),
+      borderWidth: {
+        '3': '3px',
+      },
       transitionDuration: {
           '25': '25ms', // might as well be instant
           '35': '35ms', // barely perceptible
