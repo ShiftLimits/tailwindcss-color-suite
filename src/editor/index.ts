@@ -12,6 +12,7 @@ import ButtonTab from './components/ButtonTab.vue'
 import ButtonGhost from './components/ButtonGhost.vue'
 import ButtonNeutral from './components/ButtonNeutral.vue'
 import ButtonBlue from './components/ButtonBlue.vue'
+import ButtonRed from './components/ButtonRed.vue'
 import FormField from './components/FormField.vue'
 import Toggle from './components/Toggle.vue'
 import TextInput from './components/TextInput.vue'
@@ -39,6 +40,7 @@ export function createColorSuiteApp() {
 	app.component('button-ghost', ButtonGhost)
 	app.component('button-neutral', ButtonNeutral)
 	app.component('button-blue', ButtonBlue)
+	app.component('button-red', ButtonRed)
 	app.component('form-field', FormField)
 	app.component('text-input', TextInput)
 	app.component('toggle', Toggle)
