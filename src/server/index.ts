@@ -22,7 +22,7 @@ const parseBody = <T={[key:string]:any}>(req:Connect.IncomingMessage, res:Server
 
 export function createColorSuiteServer(server:ViteDevServer, color_config:ColorSuiteConfig, color_config_path:string) {
 	async function saveConfig(reload:boolean = false) {
-		await fs.writeFile(color_config_path, `module.exports = ${ inspect(color_config) }`)
+		await fs.writeFile(color_config_path, `module.exports = ${ inspect(color_config, false, Infinity) }`)
 
 		let config_module = server.moduleGraph.getModuleById(COLOR_CONFIG_ID)
 		if(config_module) server.moduleGraph.invalidateModule(config_module)

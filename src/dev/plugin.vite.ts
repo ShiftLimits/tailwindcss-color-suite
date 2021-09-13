@@ -19,7 +19,7 @@ export function colorSuiteDevPlugin():Plugin {
       throw new Error(`[Color Suite Dev] A color config file exists at '${ color_config_path}' but it could not be required.`)
     } else try {
       // Color config file doesn't exist so we can try to make a new one
-      writeFileSync(color_config_path, `module.exports = ${ inspect(DEFAULT_COLOR_CONFIG) }`)
+      writeFileSync(color_config_path, `module.exports = ${ inspect(DEFAULT_COLOR_CONFIG, false, Infinity) }`)
       color_config = DEFAULT_COLOR_CONFIG
     } catch(e) {
       console.error(e)
