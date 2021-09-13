@@ -5,7 +5,7 @@ export const COLOR_SUITE_ID = '@tailwindcss-color-suite'
 export const COLOR_SUITE_PATH = `/${COLOR_SUITE_ID}`
 
 // Color config
-export const COLOR_CONFIG_ID = `${COLOR_SUITE_ID}/color/config`
+export const COLOR_CONFIG_ID = `${COLOR_SUITE_ID}/colors/config`
 export const COLOR_CONFIG_PATH = `/${COLOR_CONFIG_ID}`
 
 // Settings config
