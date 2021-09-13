@@ -14,7 +14,7 @@ export function useSettingsService() {
 }
 
 export function createSettingsService(store:Store<any>) {
-	const settings = new Proxy<ColorSuiteSettings>({} as ColorSuiteSettings, {
+	const settings = new Proxy<ColorSuiteSettings>(reactive({}) as ColorSuiteSettings, {
 		get(target, prop) {
 			return store.state.settings[prop]
 		},
@@ -26,7 +26,7 @@ export function createSettingsService(store:Store<any>) {
 
 	if (import.meta.hot) {
 		import.meta.hot.on(`${ COLOR_SUITE_ID }:config-updated` as any, (config:any) => {
-			Object.assign(settings, config.settings)
+			store.commit('settings/update', config.settings)
 		})
 	}
 
