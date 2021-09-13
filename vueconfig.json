@@ -1,0 +1,16 @@
+{
+  "globalComponents": [
+    "svg-icon",
+    "abstract-button",
+    "button-tab",
+    "button-ghost",
+    "button-neutral",
+    "button-blue",
+    "button-red",
+    "form-field",
+    "text-input",
+    "toggle",
+    "slider",
+    "slider-xy"
+  ]
+}
