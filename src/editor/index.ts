@@ -31,7 +31,7 @@ export function createColorSuiteApp() {
 	const keyboard_service = createKeyboardService()
 	app.use(keyboard_service)
 
-	const settings_service = createSettingsService()
+	const settings_service = createSettingsService(store)
 	app.use(settings_service)
 
 	app.component('svg-icon', SvgIcon)
