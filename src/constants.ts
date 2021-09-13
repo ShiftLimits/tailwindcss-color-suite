@@ -21,7 +21,7 @@ export const SETTINGS_UPDATE_PATH = `/${COLOR_SUITE_ID}/settings/update`
 
 // Default config file
 export const DEFAULT_COLOR_CONFIG:ColorSuiteConfig = {
-	colors: [],
+	colors: {},
 	settings: {
 		open_button: true,
 		float_panel: false,
