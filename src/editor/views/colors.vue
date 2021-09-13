@@ -9,7 +9,7 @@
 				<button-ghost to="/colors/create?type=alias">Alias</button-ghost>
 			</div>
 		</div>
-		<div v-if="Object.keys(colors).length || settings.include_transparent || settings.include_current" class="__cs-flex-1 __cs-flex __cs-flex-col __cs-overflow-auto">
+		<div v-if="Object.keys(colors).length || settings.include_transparent || settings.include_current" class="__cs-flex-1 __cs-flex __cs-flex-col __cs-overflow-auto __cs-overscroll-contain">
 			<template v-if="Object.keys(colors).length">
 				<router-link v-for="(color, token) in colors" :key="token" :to="`/colors/${token}`" class="__cs-p-2 __cs-flex __cs-space-x-2 __cs-border-b __cs-border-black hover:__cs-bg-gray-600">
 					<div class="__cs-rounded-sm __cs-bg-gray-800 __cs-w-3 __cs-cursor-move"></div>

@@ -20,7 +20,7 @@
 			<button-tab to="/colors">Color Palette</button-tab>
 			<button-tab to="/settings">Settings</button-tab>
 		</div>
-		<div class="__cs-flex-1 __cs-overflow-auto __cs-bg-gray-900 __cs-text-white">
+		<div class="__cs-flex-1 __cs-overflow-auto __cs-overscroll-contain __cs-bg-gray-900 __cs-text-white">
 			<router-view />
 		</div>
 	</div>
@@ -53,7 +53,7 @@
 			watch(max_width, () => {
 				if (!settings.float_panel && open.value) document.body.style.paddingLeft = `${original_body_padding_left_calculated + max_width.value}px`
 			})
-			watch(() => settings.float_panel, (new_value) => {
+			watch(() => settings.float_panel, () => {
 				if (settings.float_panel) document.body.style.paddingLeft = original_body_padding_left
 				else if(max_width.value < window.innerWidth) document.body.style.paddingLeft = `${original_body_padding_left_calculated + max_width.value}px`
 			})
