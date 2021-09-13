@@ -5,6 +5,7 @@ import { createStore } from './store'
 import { createRouter } from './router'
 import { createKeyboardService } from './services/keyboard'
 import { createSettingsService } from './services/settings'
+import { createColorService } from './services/color'
 
 import SvgIcon from './components/SvgIcon.vue'
 import AbstractButton from './components/AbstractButton.vue'
@@ -33,6 +34,9 @@ export function createColorSuiteApp() {
 
 	const settings_service = createSettingsService(store)
 	app.use(settings_service)
+
+	const color_service = createColorService(store)
+	app.use(color_service)
 
 	app.component('svg-icon', SvgIcon)
 	app.component('abstract-button', AbstractButton)
