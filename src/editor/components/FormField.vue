@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<label v-if="label">
+		<div v-if="label">
 			<div class="__cs-text-sm __cs-font-bold __cs-mb-2">{{ label }}</div>
 			<slot :validation="validation" :errors="errors" />
-		</label>
+		</div>
 		<template v-else><slot /></template>
 		<div v-if="help" class="__cs-text-sm __cs-text-gray-400">{{ help }}</div>
 		<div class="text-sm text-red-500" v-if="errors && (noErrors == false || noErrors == undefined) && errors.length">{{ errors[0] }}</div>
