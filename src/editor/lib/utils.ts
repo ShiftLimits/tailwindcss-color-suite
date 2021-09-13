@@ -1,3 +1,5 @@
+import { isReactive, reactive, Ref, watch } from 'vue';
+
 export function debounceAnimationFrame<F extends (...args:any[]) => any>(fn:F) {
 	let animation_frame:number;
 	return function(...args:Parameters<F>) {
