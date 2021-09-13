@@ -1,6 +1,12 @@
 import { Point } from './editor/lib/point'
 import { ColorHSVA } from './editor/lib/color'
 
+export interface CSComponentCurve {
+	start:number
+	mid:number
+	end:number
+	controls:[Point, Point, Point, Point]
+}
 
 export type CSColorSolid = ColorHSVA // Store Solid as HSVA representation
 
