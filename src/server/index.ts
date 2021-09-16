@@ -53,7 +53,7 @@ export function createColorSuiteServer(server:ViteDevServer, color_config:ColorS
 			if (color_config.colors[token]) throw new Error('Color token already exists.')
 
 			color_config.colors[token] = value
-			await saveConfig()
+			await saveConfig(true)
 
 			res.setHeader('Content-Type', 'application/json')
 			res.end(JSON.stringify({ success: true }))
@@ -103,7 +103,7 @@ export function createColorSuiteServer(server:ViteDevServer, color_config:ColorS
 			}
 
 			delete color_config.colors[token]
-			await saveConfig()
+			await saveConfig(true)
 
 			res.setHeader('Content-Type', 'application/json')
 			res.end(JSON.stringify({ success: true }))
