@@ -14,6 +14,9 @@
 		"build": "vite build && tsup",
 		"dev": "vite"
 	},
+	"bin": {
+		"tailwindcss-color-suite": "bin/cli.js"
+	},
 	"gitHooks": {
 		"commit-msg": "node scripts/verifyCommit.js"
 	},
