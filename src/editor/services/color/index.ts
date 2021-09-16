@@ -1,11 +1,12 @@
 import { inject, reactive } from 'vue';
 import { Store } from 'vuex'
 import { ColorService } from './types';
-import { ColorSuiteColors } from '../../../types'
+import { ColorSuiteColors, CSColor } from '../../../types'
 import { CreateColorForm, UpdateColorForm } from './forms'
 import { COLOR_SUITE_ID } from '../../../constants'
 import { color_store } from './store'
 import colors_config from '@tailwindcss-color-suite/colors/config'
+import { updateRootVariables } from '../../lib/utils.color-suite'
 
 const color_service_key = Symbol('__COLOR_SERVICE__')
 
@@ -21,14 +22,22 @@ export function createColorService(store:Store<any>) {
 			return store.state.colors[prop]
 		},
 		set(target, prop, value) {
-			// store.dispatch('colors/update', { token: prop, form: { token: prop, value }})
+			// swallow the update (readonly)
 			return true
 		}
 	})
 
+	for (let [token, value] of Object.entries<CSColor>(colors_config)) {
+		updateRootVariables(token, value, colors_config)
+	}
+
 	if (import.meta.hot) {
 		import.meta.hot.on(`${ COLOR_SUITE_ID }:config-updated` as any, (config:any) => {
 			store.commit('colors/updateAll', config.colors)
+
+			for (let [token, value] of Object.entries<CSColor>(config.colors)) {
+				updateRootVariables(token, value, config.colors)
+			}
 		})
 	}
 
