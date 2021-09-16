@@ -1,5 +1,5 @@
 module.exports = {
-  colors: [],
+  colors: {},
   settings: {
     open_button: true,
     float_panel: false,
