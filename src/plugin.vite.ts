@@ -63,7 +63,7 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
     },
     handleHotUpdate({ file, server }) {
       if (file.match(/colors\.config\.js/g)) {
-        delete require.cache[require.resolve(color_config_path)] // invalidate require
+        if (require.resolve) delete require.cache[require.resolve(color_config_path)] // invalidate require on cjs
         color_config = require(color_config_path) // re-require
         color_config = Object.assign(DEFAULT_COLOR_CONFIG, color_config) // make sure we've got all defaults
 
