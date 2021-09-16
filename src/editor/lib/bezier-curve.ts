@@ -37,12 +37,10 @@ function getRoots(pa:number, pb:number, pc:number, pd:number) {
 	}
 
 	// at this point, we know we need a cubic solution:
-	// console.log(a, b, c, d)
 
 	a /= d;
 	b /= d;
 	c /= d;
-	// console.log(a, b, c)
 
 	var p = (3 * b - a * a) / 3,
 		p3 = p / 3,
@@ -54,7 +52,6 @@ function getRoots(pa:number, pb:number, pc:number, pd:number) {
 		x1,
 		x2,
 		x3;
-		// console.log(`p`, p, q, discriminant)
 	if (discriminant < 0) { // Discriminant is negative, there are 3 roots
 		var mp3 = -p / 3,
 			mp33 = mp3 * mp3 * mp3,
@@ -67,16 +64,13 @@ function getRoots(pa:number, pb:number, pc:number, pd:number) {
 		x1 = t1 * Math.cos(phi / 3) - a / 3;
 		x2 = t1 * Math.cos((phi + TAU) / 3) - a / 3;
 		x3 = t1 * Math.cos((phi + 2 * TAU) / 3) - a / 3;
-		// console.log(x1, x2, x3, pa, pb, pc, pd)
 		return [x1, x2, x3].filter(reduce);
-	} else if (discriminant === 0 && p + q != 0) { // Discriminant is zero, there are two roots 
-		// console.log("B")
+	} else if (discriminant === 0 && p + q != 0) { // Discriminant is zero, there are two roots
 		u1 = q2 < 0 ? cuberoot(-q2) : -cuberoot(q2);
 		x1 = 2 * u1 - a / 3;
 		x2 = -u1 - a / 3;
 		return [x1, x2].filter(reduce);
 	} else { // Discriminant is positive, there is one root
-		// console.log("A")
 		var sd = Math.sqrt(discriminant);
 		u1 = cuberoot(-q2 + sd);
 		v1 = cuberoot(q2 + sd);

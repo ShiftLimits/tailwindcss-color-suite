@@ -36,10 +36,7 @@ export default defineComponent({
 		})
 		return {
 			resolved_is,
-			custom,
-			test() {
-				console.log('test')
-			}
+			custom
 		}
 	}
 })

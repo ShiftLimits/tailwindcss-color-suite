@@ -50,10 +50,6 @@ export default defineComponent({
 			let duplicate_number = match_last_number ? parseInt(match_last_number[2]) + 1 : 2
 			let duplicate_token = `${base_token}-${duplicate_number}`
 			while(colors[duplicate_token] != undefined) duplicate_token = `${base_token}-${duplicate_number++}`
-			console.log(token, {
-				token: duplicate_token,
-				value: colors[token]
-			})
 
 			await createColor({
 				token: duplicate_token,

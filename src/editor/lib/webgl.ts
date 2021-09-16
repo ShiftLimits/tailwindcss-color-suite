@@ -37,7 +37,6 @@ export function createFragmentProgram(canvas:HTMLCanvasElement, fragment_source:
 		const canvas_rect = canvas.getBoundingClientRect()
 		const width = canvas.width = canvas_rect.width * device_pixel_ratio
 		const height = canvas.height = canvas_rect.height * device_pixel_ratio
-		// console.log(`rendering ${width} ${height}`)
 
 		gl.viewport(0, 0, width, height)
 		setResolution([width, height])
