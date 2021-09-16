@@ -34,9 +34,22 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
 	return {
 		name: 'tailwindcss-color-suite',
     apply: 'serve',
+    enforce: 'pre',
     configureServer: server => {
       server.watcher.add(color_config_path)
       return createColorSuiteServer(server, color_config, color_config_path)
+    },
+    config(config) {
+      const exclude = [COLOR_CONFIG_ID, SETTINGS_CONFIG_ID]
+      if (!config.optimizeDeps) config.optimizeDeps = { exclude }
+      else {
+        if (!config.optimizeDeps.exclude) config.optimizeDeps.exclude = exclude
+        else {
+          config.optimizeDeps.exclude = [...config.optimizeDeps.exclude, ...exclude]
+        }
+      }
+
+      return config
     },
 		resolveId(id) {
       // Virtual File: /@tailwindcss-color-suite
