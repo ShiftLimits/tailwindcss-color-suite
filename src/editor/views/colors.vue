@@ -9,15 +9,17 @@
 				<button-ghost to="/colors/create?type=alias">Alias</button-ghost>
 			</div>
 		</div>
-		<div v-if="Object.keys(colors).length || settings.include_transparent || settings.include_current" class="__cs-flex-1 __cs-flex __cs-flex-col __cs-overflow-auto __cs-overscroll-contain">
-			<template v-if="Object.keys(colors).length">
-				<color-palette-item v-for="(color, token) in colors" :key="token" :color="color" :token="token.toString()">
-					<div class="__cs-flex __cs-items-center __cs-justify-center __cs-pr-2">
-						<button @click.prevent="confirmDeleteColor(token.toString())" class="__cs-p-2 hover:__cs-bg-gray-700 hover:__cs-rounded-t-md __cs-text-gray-300 hover:__cs-text-white"><svg-icon name="delete" class="__cs-fill-current __cs-h-4" /></button>
-						<button @click.prevent="duplicateColor(token.toString())" class="__cs-p-2 hover:__cs-bg-gray-700 hover:__cs-rounded-t-md __cs-text-gray-300 hover:__cs-text-white"><svg-icon name="copy" class="__cs-fill-current __cs-h-4" /></button>
-					</div>
-				</color-palette-item>
-			</template>
+		<div v-if="color_list.length || settings.include_transparent || settings.include_current" class="__cs-flex-1 __cs-flex __cs-flex-col __cs-overflow-auto __cs-overscroll-contain">
+			<draggable v-if="color_list.length" v-model="color_list" item-key="0" handle=".handle">
+				<template #item="{ element: [token, color] }">
+					<color-palette-item :color="color" :token="token.toString()">
+						<div class="__cs-flex __cs-items-center __cs-justify-center __cs-pr-2">
+							<button @click.prevent="confirmDeleteColor(token.toString())" class="__cs-p-2 hover:__cs-bg-gray-700 hover:__cs-rounded-t-md __cs-text-gray-300 hover:__cs-text-white"><svg-icon name="delete" class="__cs-fill-current __cs-h-4" /></button>
+							<button @click.prevent="duplicateColor(token.toString())" class="__cs-p-2 hover:__cs-bg-gray-700 hover:__cs-rounded-t-md __cs-text-gray-300 hover:__cs-text-white"><svg-icon name="copy" class="__cs-fill-current __cs-h-4" /></button>
+						</div>
+					</color-palette-item>
+				</template>
+			</draggable>
 			<color-palette-item v-if="settings.include_transparent" color="transparent" token="transparent" css locked help="CSS `transparent` value. Configure in settings." />
 			<color-palette-item v-if="settings.include_current" color="currentColor" token="current" css locked help="CSS `currentColor` value. Configure in settings." />
 		</div>
@@ -28,16 +30,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
-import ColorPaletteItem from '../components/ColorPaletteItem.vue'
+import { defineComponent, reactive, computed } from 'vue';
 import { useColorService } from '../services/color'
 import { useSettingsService } from '../services/settings'
+import ColorPaletteItem from '../components/ColorPaletteItem.vue'
+import Draggable from 'vuedraggable'
+import { CSColor } from '../../types';
 
 export default defineComponent({
-	components: { ColorPaletteItem },
+	components: { ColorPaletteItem, Draggable },
 	setup() {
 		const { settings } = useSettingsService()
-		const { colors, createColor, deleteColor } = useColorService()
+		const { colors, createColor, updateAll, deleteColor } = useColorService()
 
 		async function duplicateColor(token:string) {
 			let match_last_number = token.match(/(.*)-([0-9]*)$/)
@@ -61,10 +65,20 @@ export default defineComponent({
 			if (confirmed) deleteColor(token)
 		}
 
+		const color_list = computed<[string, CSColor][]>({
+			get() {
+				return Object.entries(colors)
+			},
+			set(value) {
+				updateAll(Object.fromEntries(value))
+			}
+		})
+
 		return {
 			duplicateColor,
 			confirmDeleteColor,
 			colors,
+			color_list,
 			settings
 		}
 	}
