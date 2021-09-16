@@ -73,8 +73,9 @@ export default defineComponent({
 	},
 	setup(props, { emit }) {
 		const { colors } = useColorService()
-		const token_root = computed(() => props.modelValue?.split('.')[0])
-		const open = reactive<{ [key:string]:boolean }>({ ...(token_root.value ? { [token_root.value]: true } : {} ) })
+		const tokens = computed(() => props.modelValue?.split('.'))
+		const token_root = computed(() => tokens.value ? tokens.value[0] : undefined)
+		const open = reactive<{ [key:string]:boolean }>({ ...(token_root.value && tokens.value!.length > 1 ? { [token_root.value]: true } : {} ) })
 
 		const value = ref<string|undefined>('')
 
