@@ -1,5 +1,5 @@
 <template>
-	<div class="__cs-z-panel __cs-absolute __cs-inset-y-0 __cs-left-0 __cs-w-full __cs-max-w-20 __cs-pr-1 __cs-flex __cs-flex-col __cs-pointer-events-auto __cs-transform __cs-transition-transform __cs-ease-out-brisk __cs-duration-300 __cs-text-gray-50" :class="{ '__cs--translate-x-full': !open }" :style=" max_width != null ? `max-width: ${ max_width }px !important;` : ''">
+	<div class="__cs-z-panel __cs-fixed __cs-inset-y-0 __cs-left-0 __cs-w-full __cs-max-w-20 __cs-pr-1 __cs-flex __cs-flex-col __cs-pointer-events-auto __cs-transform __cs-transition-transform __cs-ease-out-brisk __cs-duration-300 __cs-text-gray-50" :class="{ '__cs--translate-x-full': !open }" :style=" max_width != null ? `max-width: ${ max_width }px !important;` : ''">
 
 		<!-- Right Resize Handle -->
 		<div class="__cs-group __cs-absolute __cs-inset-y-0 __cs-right-0 __cs-w-2" style="cursor: ew-resize;" ref="resize_handle">
