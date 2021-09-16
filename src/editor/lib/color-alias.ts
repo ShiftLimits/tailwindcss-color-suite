@@ -1,12 +1,10 @@
-import { CSColorAlias, CSColor, CSColorAliasResolutionError } from '../../types'
-import { useColorService } from '../services/color'
-import { isColorSolid, isColorAlias, isColorScale, isColorAliasResolutionError } from './utils.color-suite';
+import { CSColorAlias, CSColor, CSColorAliasResolutionError, ColorSuiteColors } from '../../types'
+import { isColorSolid, isColorAlias, isColorScale, isColorAliasResolutionError } from './utils.color-suite'
 import { colorScaleHSVAValues } from './color-scale/utils'
 
 const tokens_looked_up:string[] = []
-export function resolveAlias(alias:CSColorAlias, deep:boolean = false):CSColor|CSColorAliasResolutionError {
+export function resolveAlias(alias:CSColorAlias, colors:ColorSuiteColors, deep:boolean = false):CSColor|CSColorAliasResolutionError {
 	if (!deep) tokens_looked_up.length = 0 // reset tokens looked up
-	const { colors } = useColorService()
 
 	let alias_keys:string[] = alias.split('.')
 
@@ -20,7 +18,7 @@ export function resolveAlias(alias:CSColorAlias, deep:boolean = false):CSColor|C
 	let resolved_color:CSColor|CSColorAliasResolutionError = colors[token]
 	if (!resolved_color) return { message: `Unable to resolve alias: ${token} does not exist in the colors config` }
 
-	if (isColorAlias(resolved_color)) resolved_color = resolveAlias(resolved_color, true) // We resolved to an alias, which itself needs to be resolved
+	if (isColorAlias(resolved_color)) resolved_color = resolveAlias(resolved_color, colors, true) // We resolved to an alias, which itself needs to be resolved
 	if (isColorAliasResolutionError(resolved_color)) return resolved_color // If the alias resolved an error let's just pass it along
 
 	// Deep look up

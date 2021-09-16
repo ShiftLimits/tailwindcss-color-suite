@@ -92,7 +92,7 @@ export default defineComponent({
 		}, { flush, immediate: false })
 
 		const resolved_colors = computed<[string, CSColor|CSColorAliasResolutionError][]>(() => Object.entries(colors).map(([token, color]) => {
-			if (isColorAlias(color)) return [token, resolveAlias(color)]
+			if (isColorAlias(color)) return [token, resolveAlias(color, colors)]
 			return [token, color]
 		}))
 

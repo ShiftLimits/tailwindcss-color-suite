@@ -29,7 +29,8 @@ import { CSColor, CSColorAliasResolutionError } from '../../types'
 import { hsvaToHex } from '../lib/color'
 import { resolveAlias } from '../lib/color-alias'
 import { colorScaleHexValues } from '../lib/color-scale'
-import { isColorAlias, isColorScale, isColorSolid, isColorAliasResolutionError } from '../lib/utils.color-suite';
+import { isColorAlias, isColorScale, isColorSolid, isColorAliasResolutionError } from '../lib/utils.color-suite'
+import { useColorService } from '../services/color'
 
 export default defineComponent({
 	props: {
@@ -40,8 +41,9 @@ export default defineComponent({
 		}
 	},
 	setup(props) {
+		const { colors } = useColorService()
 		const resolved_color = computed<CSColor|CSColorAliasResolutionError>(() => {
-			if (isColorAlias(props.color)) return resolveAlias(props.color)
+			if (isColorAlias(props.color)) return resolveAlias(props.color, colors)
 			return props.color
 		})
 
