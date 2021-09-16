@@ -33,7 +33,7 @@
 	import { UpdateColorForm } from '../../services/color/forms'
 	import { useColorService } from '../../services/color'
 	import { debounceAnimationFrame, reactiveCloneDeep } from '../../lib/utils'
-import { isColorScale, isColorAlias, isColorSolid } from '../../lib/utils.color-suite';
+import { isColorScale, isColorAlias, isColorSolid, updateRootVariables } from '../../lib/utils.color-suite';
 
 	export default defineComponent({
 		components: { ColorSingleEditor, ColorScaleEditor, ColorAliasEditor },
@@ -65,7 +65,7 @@ import { isColorScale, isColorAlias, isColorSolid } from '../../lib/utils.color-
 			}
 
 			function cancel() {
-				// updateRootVariables(token, color)
+				updateRootVariables(token, color, colors)
 				push('/')
 			}
 
@@ -75,11 +75,11 @@ import { isColorScale, isColorAlias, isColorSolid } from '../../lib/utils.color-
 			}
 
 			watch(preview, (new_value) => {
-				// if (new_value) return updateRootVariables(token, data.value)
-				// updateRootVariables(token, color)
+				if (new_value) return updateRootVariables(token, data.value, colors)
+				updateRootVariables(token, color, colors)
 			})
 			watch(data, debounceAnimationFrame(() => {
-				// if (preview.value) updateRootVariables(token, data.value)
+				if (preview.value) updateRootVariables(token, data.value, colors)
 			}))
 
 			return {
