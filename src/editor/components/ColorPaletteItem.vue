@@ -1,7 +1,7 @@
 <template>
 	<abstract-button :is="locked ? 'div' : null" :to="locked ? null : `/colors/${token}`" class="__cs-group __cs-flex __cs-border-b __cs-border-black" :class="{ '__cs-bg-red-900 hover:__cs-bg-red-800': has_error, '__cs-bg-gray-700 hover:__cs-bg-gray-600': !has_error }">
 		<div class="__cs-p-2 __cs-flex">
-			<div class="__cs-rounded-sm __cs-bg-gray-800 hover:__cs-bg-gray-900 __cs-w-3 __cs-cursor-move"></div>
+			<div class="handle __cs-rounded-sm __cs-bg-gray-800 hover:__cs-bg-gray-900 __cs-w-3 __cs-cursor-move" :class="{ '__cs-invisible': locked }"></div>
 		</div>
 		<div class="__cs-flex-1 __cs-min-w-0 __cs-flex __cs-flex-col">
 			<div class="__cs-flex __cs-p-2 __cs-bg-gray-900 __cs-rounded-bl-lg">
