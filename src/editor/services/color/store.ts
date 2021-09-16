@@ -1,7 +1,8 @@
 import { Module } from 'vuex'
-import { ColorSuiteColors } from '../../../types';
-import { CreateColorForm, UpdateColorForm } from './forms';
-import { hydrateColorConfig } from '../../lib/utils.color-suite'
+import { ColorSuiteColors } from '../../../types'
+import { CreateColorForm, UpdateColorForm } from './forms'
+import { hydrateColorConfig, isColorScale, convertPoints } from '../../lib/utils.color-suite'
+import { reactiveCloneDeep } from '../../lib/utils'
 import colors_config from '@tailwindcss-color-suite/colors/config'
 
 interface UpdatePayload {
@@ -25,12 +26,15 @@ export const color_store:Module<ColorSuiteColors, any> = {
 			if (form.token != token) delete state[token] // this token is being renamed, delete old one
 			state[form.token] = form.value
 		},
-		delete(state, { token }:DeletePayload) {
-			delete state[token]
-		},
-		hotReload(state, colors:ColorSuiteColors) {
+		updateAll(state, colors:ColorSuiteColors) {
 			let remaining_tokens = Object.keys(state)
 			for (let [token, color] of Object.entries(colors)) {
+				if (isColorScale(color)) {
+					convertPoints(color.hue_curve)
+					convertPoints(color.saturation_curve)
+					convertPoints(color.value_curve)
+				}
+
 				let current_token = remaining_tokens.shift()
 
 				if (current_token && token != current_token) { // There is a token in this position but it does not match the one from our new config
@@ -46,6 +50,9 @@ export const color_store:Module<ColorSuiteColors, any> = {
 			}
 
 			for (let token of remaining_tokens) delete state[token] // delete any remaining tokens from the state as they are no longer in the config
+		},
+		delete(state, { token }:DeletePayload) {
+			delete state[token]
 		}
 	},
 	actions: {
@@ -77,6 +84,26 @@ export const color_store:Module<ColorSuiteColors, any> = {
 				context.commit('update', { token, form })
 				return { success: true }
 			}
+			return { success: false }
+		},
+		async updateAll(context, colors:ColorSuiteColors) {
+			const memento = reactiveCloneDeep(context.state)
+
+			context.commit('updateAll', colors) // Eager commit
+
+			let result = await fetch(`/@tailwindcss-color-suite/color/updateAll`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(colors)
+			})
+
+			if (result.ok) {
+				return { success: true }
+			}
+
+			context.commit('updateAll', memento) // Roll back eager commit
 			return { success: false }
 		},
 		async delete(context, { token }:DeletePayload) {

@@ -15,6 +15,7 @@ export const SETTINGS_CONFIG_PATH = `/${SETTINGS_CONFIG_ID}`
 // Server end points for mutations on config
 export const COLOR_CREATE_PATH = `/${COLOR_SUITE_ID}/color/create`
 export const COLOR_UPDATE_PATH = `/${COLOR_SUITE_ID}/color/update`
+export const COLOR_UPDATE_ALL_PATH = `/${COLOR_SUITE_ID}/color/updateAll`
 export const COLOR_DELETE_PATH = `/${COLOR_SUITE_ID}/color/delete`
 
 export const SETTINGS_UPDATE_PATH = `/${COLOR_SUITE_ID}/settings/update`

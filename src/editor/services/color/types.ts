@@ -6,6 +6,7 @@ export interface ColorService {
 	colors:ColorSuiteColors,
 	createColor(data:CreateColorForm):Promise<any>
 	updateColor(token:string, data:UpdateColorForm):Promise<any>
+	updateAll(colors:ColorSuiteColors):Promise<any>
 	deleteColor(token:string):Promise<any>
 	install(app:App):void
 }

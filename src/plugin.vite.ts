@@ -51,7 +51,7 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
     load(id) {
       // Virtual File: /@tailwindcss-color-suite
       // Main entry point to scaffold the editor application.
-      if (id === COLOR_SUITE_PATH) return `/* import "tailwindcss-color-suite/dist/main"; import "tailwindcss-color-suite/dist/main/style.css */";`
+      if (id === COLOR_SUITE_PATH) return `import "tailwindcss-color-suite/dist/app.main"; import "tailwindcss-color-suite/dist/app.main/style.css";`
 
       // Virtual Import: @tailwindcss-color-suite/color/config
       // Returns the current color config object

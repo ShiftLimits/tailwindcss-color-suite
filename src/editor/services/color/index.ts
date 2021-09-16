@@ -28,7 +28,7 @@ export function createColorService(store:Store<any>) {
 
 	if (import.meta.hot) {
 		import.meta.hot.on(`${ COLOR_SUITE_ID }:config-updated` as any, (config:any) => {
-			store.commit('colors/hotReload', config.colors)
+			store.commit('colors/updateAll', config.colors)
 		})
 	}
 
@@ -41,6 +41,10 @@ export function createColorService(store:Store<any>) {
 		return store.dispatch('colors/update', { token, form })
 	}
 
+	function updateAll(colors:ColorSuiteColors) {
+		return store.dispatch('colors/updateAll', colors)
+	}
+
 	function deleteColor(token:string) {
 		return store.dispatch('colors/delete', { token })
 	}
@@ -49,6 +53,7 @@ export function createColorService(store:Store<any>) {
 		colors,
 		createColor,
 		updateColor,
+		updateAll,
 		deleteColor,
 		install(app) {
 			store.registerModule('colors', color_store)
