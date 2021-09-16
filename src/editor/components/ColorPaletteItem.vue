@@ -1,5 +1,5 @@
 <template>
-	<router-link :to="`/colors/${token}`" class="__cs-group __cs-flex __cs-border-b __cs-border-black" :class="{ '__cs-bg-red-900 hover:__cs-bg-red-800': has_error, '__cs-bg-gray-700 hover:__cs-bg-gray-600': !has_error }">
+	<abstract-button :is="locked ? 'div' : null" :to="locked ? null : `/colors/${token}`" class="__cs-group __cs-flex __cs-border-b __cs-border-black" :class="{ '__cs-bg-red-900 hover:__cs-bg-red-800': has_error, '__cs-bg-gray-700 hover:__cs-bg-gray-600': !has_error }">
 		<div class="__cs-p-2 __cs-flex">
 			<div class="__cs-rounded-sm __cs-bg-gray-800 hover:__cs-bg-gray-900 __cs-w-3 __cs-cursor-move"></div>
 		</div>
@@ -20,7 +20,7 @@
 				<slot />
 			</div>
 		</div>
-	</router-link>
+	</abstract-button>
 </template>
 
 <script lang="ts">
@@ -38,7 +38,8 @@ export default defineComponent({
 		color: {
 			type: [String, Object] as PropType<CSColor>,
 			required: true
-		}
+		},
+		locked:Boolean,
 	},
 	setup(props) {
 		const { colors } = useColorService()
