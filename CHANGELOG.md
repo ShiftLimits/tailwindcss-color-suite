@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+No changes.
+
+## [0.3.0] - 2021-09-16
+
 Initial public release! Third refactor.
 
 ### Vite Plugin
@@ -65,4 +69,3 @@ Initial public release! Third refactor.
 
 #### Added
 - Add development version of the Vite plugin to scaffold the editor for development
-
