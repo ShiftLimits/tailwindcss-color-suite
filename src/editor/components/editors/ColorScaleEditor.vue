@@ -159,10 +159,19 @@
 			const base_hex = computed({
 				get: () => base_color.hex,
 				set(new_hex) {
-					const { h, s, v } = hexToHSVA(new_hex)
-					data.value.hue_curve.mid = h/360
-					data.value.saturation_curve.mid = s/100
-					data.value.value_curve.mid = v/100
+					let { h, s, v } = hexToHSVA(new_hex)
+					h /= 360
+					s /= 100
+					v /= 100
+
+					data.value.hue_curve.mid = h
+					data.value.saturation_curve.mid = s
+					data.value.value_curve.mid = v
+
+					if (!data.value.use_hue_curve) {
+						data.value.hue_curve.start = h
+						data.value.hue_curve.end = h
+					}
 				}
 			})
 			watch(() => data.value.hue_curve.mid, () => base_color.h = data.value.hue_curve.mid * 360)
