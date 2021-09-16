@@ -3,6 +3,13 @@
 	"version": "0.3.0",
 	"author": "Jeff Schofield <jeff@jeffschofield.com>",
 	"license": "MIT",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist/**/*",
+		"readme.md"
+	],
 	"scripts": {
 		"build": "vite build && tsup src/index.ts --dts --sourcemap --minify --format cjs,esm",
 		"dev": "vite"
