@@ -14,12 +14,9 @@
 				<text-input v-model="data.token" />
 			</form-field>
 			<form-field label="Base Color">
-				<div class="flex">
-					<!-- <div><color-picker v-model="base_color" /></div> -->
-					<text-input v-model="base_hex" />
+				<div class="__cs-flex">
+					<text-input class="__cs-flex-1" v-model="base_hex" />
 				</div>
-				<!-- color picker
-				[c] [#hex] -->
 			</form-field>
 			<form-field>
 				<div class="__cs-block __cs-space-y-2">
