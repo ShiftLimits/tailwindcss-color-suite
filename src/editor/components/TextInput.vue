@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref, watch } from 'vue'
+	import { defineComponent, ref, watch, nextTick } from 'vue';
 
 	export default defineComponent({
 		props: {
@@ -23,15 +23,19 @@
 		},
 		emits: ['update:modelValue'],
 		setup (props, {emit}) {
-			const text = ref<string|number>('')
+			const text = ref<string|number|undefined>('')
 
 			const flush = 'sync'
+			let syncing = false
 			watch(() => props.modelValue, (new_value) => {
-				text.value = new_value as string | number
+				syncing = true // Mark as syncing so when we set the internal value it doesn't also emit again
+				text.value = new_value
+				nextTick(() => syncing = false) // Mark as not syncing on the next tick; since flush is 'sync' both watches will be processed at once; after that we need not be marked as syncing
 			}, { flush, immediate: true })
 			watch(text, (new_value) => {
-				emit('update:modelValue', new_value)
-			}, { flush, immediate: true })
+				if (syncing) syncing = false
+				else emit('update:modelValue', new_value)
+			}, { flush, immediate: false })
 
 			return {
 				text
