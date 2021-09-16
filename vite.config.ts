@@ -27,7 +27,7 @@ export default defineConfig({
         dir: './dist/app.main',
         entryFileNames: 'index.js'
       },
-      external: ['vue', '@tailwindcss-color-suite/colors/config', '@tailwindcss-color-suite/settings/config'],
+      external: ['@tailwindcss-color-suite/colors/config', '@tailwindcss-color-suite/settings/config'],
     }
   }
 })
