@@ -18,8 +18,8 @@
 					</div>
 				</color-palette-item>
 			</template>
-			<!-- <color-palette-item v-if="settings.include_transparent" color="transparent" token="transparent"></color-palette-item>
-			<color-palette-item v-if="settings.include_current" color="currentColor" token="current"></color-palette-item> -->
+			<color-palette-item v-if="settings.include_transparent" color="transparent" token="transparent" css locked help="CSS `transparent` value. Configure in settings." />
+			<color-palette-item v-if="settings.include_current" color="currentColor" token="current" css locked help="CSS `currentColor` value. Configure in settings." />
 		</div>
 		<div v-else class="__cs-flex-1 __cs-flex __cs-items-center __cs-justify-center __cs-text-gray-600">
 			Your palette is empty.
