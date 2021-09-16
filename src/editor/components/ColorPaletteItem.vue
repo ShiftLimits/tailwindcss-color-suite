@@ -15,7 +15,7 @@
 			<div class="__cs-flex __cs-space-x-2 __cs-bg-gray-900 __cs-square-only-child">
 				<div class="__cs-flex-1 __cs-min-w-0 __cs-overflow-ellipsis __cs-overflow-hidden __cs-whitespace-nowrap  __cs-font-semibold __cs-rounded-tr-lg __cs-pt-1 __cs-px-3"  :class="{ '__cs-bg-red-900 group-hover:__cs-bg-red-800': has_error, '__cs-bg-gray-700 group-hover:__cs-bg-gray-600': !has_error }">
 					{{ token }}
-					<span v-if="isColorAlias(color)" class="__cs-text-xs" :class="{'__cs-text-gray-200':has_error, '__cs-text-gray-400': !has_error}">{{ has_error ? resolved_color.message : color }}</span>
+					<span v-if="help" class="__cs-text-xs __cs-text-gray-400">{{ help }}</span>
 				</div>
 				<slot />
 			</div>
@@ -39,6 +39,7 @@ export default defineComponent({
 			type: [String, Object] as PropType<CSColor>,
 			required: true
 		},
+		help:String,
 		locked:Boolean,
 	},
 	setup(props) {
