@@ -41,7 +41,7 @@ Initial public release! Third refactor.
 - Add `FormField` component to wrap common elements around form inputs
 - Add `TextInput` component for styling text input
 - Add `Toggle` component for styling a checkbox to look like a toggle switch
-- Add `Slider` and `SliderXY` input components for getting one or two values between a fixed range
+- Add `Slider` and `SliderXy` input components for getting one or two values between a fixed range
 - Add `ColorPicker` component for choosing a single color with visual HSVA picker and inputs for Hex, Alpha, RGB, and HSV
 - Add `ColorSelect` component for selecting a color token from your color palette
 

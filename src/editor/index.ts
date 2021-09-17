@@ -18,7 +18,7 @@ import FormField from './components/FormField.vue'
 import Toggle from './components/Toggle.vue'
 import TextInput from './components/TextInput.vue'
 import Slider from './components/Slider.vue'
-import SliderXY from './components/SliderXY.vue'
+import SliderXy from './components/SliderXy.vue'
 
 export function createColorSuiteApp() {
 	const app = createApp(App)
@@ -49,7 +49,7 @@ export function createColorSuiteApp() {
 	app.component('text-input', TextInput)
 	app.component('toggle', Toggle)
 	app.component('slider', Slider)
-	app.component('slider-xy', SliderXY)
+	app.component('slider-xy', SliderXy)
 
 	return { app, store, router }
 }
