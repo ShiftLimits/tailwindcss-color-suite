@@ -25,6 +25,10 @@
 				<toggle v-model="settings.include_current" />
 				<div>Include currentColor color</div>
 			</label>
+			<label class="__cs-flex __cs-items-center __cs-space-x-2">
+				<toggle v-model="settings.include_inherit" />
+				<div>Include inherit color</div>
+			</label>
 		</div>
 	</section>
 </template>

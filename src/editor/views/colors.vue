@@ -9,7 +9,7 @@
 				<button-ghost to="/colors/create?type=alias">Alias</button-ghost>
 			</div>
 		</div>
-		<div v-if="color_list.length || settings.include_transparent || settings.include_current" class="__cs-flex-1 __cs-flex __cs-flex-col __cs-overflow-auto __cs-overscroll-contain">
+		<div v-if="color_list.length || settings.include_transparent || settings.include_current || settings.include_inherit" class="__cs-flex-1 __cs-flex __cs-flex-col __cs-overflow-auto __cs-overscroll-contain">
 			<draggable v-if="color_list.length" v-model="color_list" item-key="0" handle=".handle">
 				<template #item="{ element: [token, color] }">
 					<color-palette-item :color="color" :token="token.toString()">
@@ -22,6 +22,7 @@
 			</draggable>
 			<color-palette-item v-if="settings.include_transparent" color="transparent" token="transparent" css locked help="CSS `transparent` value. Configure in settings." />
 			<color-palette-item v-if="settings.include_current" color="currentColor" token="current" css locked help="CSS `currentColor` value. Configure in settings." />
+			<color-palette-item v-if="settings.include_inherit" color="inherit" token="inherit" css locked help="CSS `inherit` value. Configure in settings." />
 		</div>
 		<div v-else class="__cs-flex-1 __cs-flex __cs-items-center __cs-justify-center __cs-text-gray-600">
 			Your palette is empty.

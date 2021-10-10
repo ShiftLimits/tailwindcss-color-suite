@@ -35,6 +35,7 @@ export interface ColorSuiteSettings {
 	float_panel:boolean
 	include_transparent:boolean
 	include_current:boolean
+	include_inherit:boolean
 }
 
 export type ColorSuiteColors = {[key:string]:CSColor}

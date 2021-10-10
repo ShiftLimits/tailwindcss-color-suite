@@ -5,4 +5,5 @@ export class UpdateSettingsForm implements Partial<ColorSuiteSettings> {
 	float_panel?:boolean
 	include_transparent?:boolean
 	include_current?:boolean
+	include_inherit?:boolean
 }

@@ -27,6 +27,7 @@ export const DEFAULT_COLOR_CONFIG:ColorSuiteConfig = {
 		open_button: true,
 		float_panel: false,
 		include_current: true,
-		include_transparent: true
+		include_transparent: true,
+		include_inherit: true
 	}
 }

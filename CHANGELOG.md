@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-No changes.
+### Added
+- Add setting for adding CSS `inherit` value to palette
 
 ## [0.3.0] - 2021-09-16
 

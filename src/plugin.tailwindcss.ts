@@ -6,7 +6,7 @@ import { inspect } from 'util'
 import { colorToTailwind } from './editor/lib/utils.tailwind'
 
 export function configToTailwindColors(color_config:ColorSuiteConfig, use_rgba?:boolean) {
-	const { include_current, include_transparent } = color_config.settings
+	const { include_current, include_transparent, include_inherit } = color_config.settings
 
 	let tailwind_color_config = {}
 	for (let [token, value] of Object.entries(color_config.colors)) {
@@ -15,6 +15,7 @@ export function configToTailwindColors(color_config:ColorSuiteConfig, use_rgba?:
 
   if (include_transparent) tailwind_color_config['transparent'] = 'transparent'
   if (include_current) tailwind_color_config['current'] = 'currentColor'
+  if (include_inherit) tailwind_color_config['inherit'] = 'inherit'
 
 	return tailwind_color_config
 }
