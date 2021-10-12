@@ -4,12 +4,12 @@ import { COLOR_SUITE_PATH, COLOR_CONFIG_ID, DEFAULT_COLOR_CONFIG, EDITOR_APP_MOU
 import { createColorSuiteServer } from './server/index'
 import { writeFileSync, existsSync } from 'fs'
 import { inspect } from 'util'
-import { join } from 'path'
+import { join, isAbsolute } from 'path'
 
 export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
   let { config } = Object.assign({ config: 'colors.config.js' }, options)
 
-  let color_config_path = join(process.cwd(), config)
+  let color_config_path = isAbsolute(config) ? config : join(process.cwd(), config)
   let color_config:ColorSuiteConfig
   try {
     color_config = require(color_config_path)

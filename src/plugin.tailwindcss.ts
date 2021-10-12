@@ -1,5 +1,5 @@
 import { ColorSuiteConfig } from './types'
-import { join } from 'path'
+import { join, isAbsolute } from 'path'
 import { existsSync, writeFileSync } from 'fs';
 import { DEFAULT_COLOR_CONFIG } from './constants'
 import { inspect } from 'util'
@@ -23,7 +23,7 @@ export function configToTailwindColors(color_config:ColorSuiteConfig, use_rgba?:
 export function configureColors(options:{ config?:string } = {}) {
 	let { config } = Object.assign({ config: 'colors.config.js' }, options)
 
-  let color_config_path = join(process.cwd(), config)
+  let color_config_path = isAbsolute(config) ? config : join(process.cwd(), config)
   let color_config:ColorSuiteConfig
   try {
     color_config = require(color_config_path)
