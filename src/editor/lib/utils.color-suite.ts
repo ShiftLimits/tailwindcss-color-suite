@@ -36,8 +36,20 @@ export function hydrateColorConfig(colors:ColorSuiteColors) {
 	return colors
 }
 
+const root_variable_sheet_indexes = new Map<string, number>()
 export function setRootVariable(token:string, value:string) {
-	document.documentElement.style.setProperty(`--${ token }`, value)
+	let sheet = document.styleSheets[0]
+	let existing_index:number|undefined
+	if (root_variable_sheet_indexes.has(token)) {
+		existing_index = root_variable_sheet_indexes.get(token)
+		if (existing_index) {
+			sheet.deleteRule(existing_index)
+			return root_variable_sheet_indexes.set(token, sheet.insertRule(`:root{ --${ token }: ${ value } }`, existing_index))
+		}
+	} else {
+		let new_index = sheet.insertRule(`:root{ --${ token }: ${ value } }`, sheet.rules.length)
+		root_variable_sheet_indexes.set(token, new_index)
+	}
 }
 
 export function updateRootVariables(token:string, color:CSColor, colors:ColorSuiteColors) {

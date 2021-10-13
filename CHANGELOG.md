@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add setting for adding CSS `inherit` value to palette
 
+### Changed
+- Patch root variables directly using stylesheet rather than polluting the HTML element
+
 ### Fixed
 - Don't join current working directory to config path if the passed config path is absolute.
 
