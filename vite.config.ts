@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import viteSvgIcons from 'vite-plugin-svg-icons'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { resolve } from 'path'
 
 import { colorSuiteDevPlugin } from './src/dev'
@@ -11,7 +11,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    viteSvgIcons({
+    createSvgIconsPlugin({
       iconDirs: [resolve(process.cwd(), 'src/editor/assets/icons')]
     }),
     colorSuiteDevPlugin()
