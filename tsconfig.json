@@ -7,12 +7,12 @@
     "jsx": "preserve",
     "sourceMap": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client", "node"],
+    "types": ["vite/client", "node", "jest"],
     "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }],
     "strictPropertyInitialization": false,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
     "declaration": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "tests/jest.d.ts"]
 }
