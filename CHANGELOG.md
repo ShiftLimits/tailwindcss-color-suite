@@ -6,7 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing yet.
+### Added
+- Add testing for Tailwind
+
+### Changed
+- **Breaking:** Replace `configureColors` function with `tailwindColors` function that only takes a Color Suite config object and returns the tailwind equivalent. It moves the require of the `colors.config.js` file into the tailwind config file
+  - This approach allows Tailwind to track the `colors.config.js` file as a dependency with its JIT engine which means no more full page refresh when making CRUD changes to the color palette 🎉
+- Made package dependency-free by establishing proper peer dependencies and bundling all application dependencies into the build
+- Target a minimum version of Tailwind CSS v3
+
+### Fixed
+- Prevent error when updating root variables after hot update by maintaining our own stylesheet
 
 ## [0.3.1] - 2021-10-12
 
