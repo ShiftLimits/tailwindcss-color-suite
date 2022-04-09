@@ -41,8 +41,6 @@ describe('Tailwind CSS color configuration', () => {
 		it('should generate an object for all non-color CSS values', () => {
 			const colors = tailwindColors()
 
-			console.log(colors)
-
 			expect(colors).toMatchObject({
 				transparent: 'transparent',
 				current: 'currentColor',
