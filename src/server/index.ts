@@ -53,7 +53,7 @@ export function createColorSuiteServer(server:ViteDevServer, color_config:ColorS
 			if (color_config.colors[token]) throw new Error('Color token already exists.')
 
 			color_config.colors[token] = value
-			await saveConfig(true)
+			await saveConfig(false)
 
 			res.setHeader('Content-Type', 'application/json')
 			res.end(JSON.stringify({ success: true }))
@@ -81,7 +81,7 @@ export function createColorSuiteServer(server:ViteDevServer, color_config:ColorS
 			if (!new_token) throw new Error('Color token not defined.')
 			if (new_token != token) delete color_config.colors[token] // this token is being renamed, delete old one
 			color_config.colors[new_token] = value // save the t
-			await saveConfig(true)
+			await saveConfig(false)
 
 			res.setHeader('Content-Type', 'application/json')
 			res.end(JSON.stringify({ success: true }))
@@ -138,7 +138,7 @@ export function createColorSuiteServer(server:ViteDevServer, color_config:ColorS
 			}
 
 			delete color_config.colors[token]
-			await saveConfig(true)
+			await saveConfig(false)
 
 			res.setHeader('Content-Type', 'application/json')
 			res.end(JSON.stringify({ success: true }))
