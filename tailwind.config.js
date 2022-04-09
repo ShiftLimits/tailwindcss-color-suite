@@ -12,7 +12,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gray: colors.warmGray
+        gray: colors.stone
       },
       fill: (theme) => theme('colors'),
       stroke: (theme) => theme('colors'),
