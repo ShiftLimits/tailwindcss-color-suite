@@ -4,13 +4,11 @@ function csZ(index) {
 }
 
 module.exports = {
-  purge: [
+  content: [
       './index.html',
       './src/**/*.{js,ts,vue}',
   ],
-  mode: 'jit',
 	prefix: '__cs-',
-  darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
