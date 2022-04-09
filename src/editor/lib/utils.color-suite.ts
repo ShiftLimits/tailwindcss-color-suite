@@ -36,15 +36,31 @@ export function hydrateColorConfig(colors:ColorSuiteColors) {
 	return colors
 }
 
+let color_suite_sheet:CSSStyleSheet
+function getColorSuiteSheet() {
+	if (!color_suite_sheet) {
+		const style = document.createElement("style")
+		style.id = 'color_suite_variables'
+		document.head.appendChild(style)
+
+		let sheet = style.sheet
+		if (!sheet) throw new Error('Color Suite stylesheet could not be created.')
+
+		color_suite_sheet = sheet
+	}
+
+	return color_suite_sheet
+}
+
 const root_variable_sheet_indexes = new Map<string, number>()
 export function setRootVariable(token:string, value:string) {
-	let sheet = document.styleSheets[0]
+	const sheet = getColorSuiteSheet()
 	let existing_index:number|undefined
 	if (root_variable_sheet_indexes.has(token)) {
 		existing_index = root_variable_sheet_indexes.get(token)
 		if (existing_index) {
 			sheet.deleteRule(existing_index)
-			return root_variable_sheet_indexes.set(token, sheet.insertRule(`:root{ --${ token }: ${ value } }`, existing_index))
+			root_variable_sheet_indexes.set(token, sheet.insertRule(`:root{ --${ token }: ${ value } }`, existing_index))
 		}
 	} else {
 		let new_index = sheet.insertRule(`:root{ --${ token }: ${ value } }`, sheet.rules.length)
