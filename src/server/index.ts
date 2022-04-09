@@ -68,7 +68,7 @@ export function createColorSuiteServer(server:ViteDevServer, color_config:ColorS
 			const body = await parseBody<UpdateColorForm>(req, res)
 			if (!body || Object.keys(body).length == 0) throw new Error('No data provided.')
 
-			let url:URL, token:string
+			let url:URL, token:string|null
 			try {
 				url = new URL(`http://dummy.local${req.originalUrl!}`)
 				token = url.searchParams.get('token')
@@ -128,7 +128,7 @@ export function createColorSuiteServer(server:ViteDevServer, color_config:ColorS
 	// Delete color
 	server.middlewares.use(COLOR_DELETE_PATH, async (req, res, next) => {
 		try {
-			let url:URL, token:string
+			let url:URL, token:string|null
 			try {
 				url = new URL(`http://dummy.local${req.originalUrl!}`)
 				token = url.searchParams.get('token')
