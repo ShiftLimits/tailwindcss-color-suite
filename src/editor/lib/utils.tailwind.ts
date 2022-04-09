@@ -3,9 +3,10 @@ import { isColorSolid, isColorAlias, isColorAliasResolutionError, isColorScale }
 import { resolveAlias } from './color-alias'
 import { colorScaleTokens, colorScaleRGBAValues } from './color-scale/utils';
 import { hsvaToRGBA } from './color/utils';
+import { TailwindColorFunction, TailwindColorValue } from 'tailwindcss/tailwind-config';
 
-export function createTailwindColorFunction(name:string, default_value?:string) {
-	return (options?:{ opacityVariable:string, opacityValue:number }) => {
+export function createTailwindColorFunction(name:string, default_value?:string):TailwindColorFunction {
+	return (options) => {
 		let css_variable = `var(--${ name }${ default_value ? `, ${ default_value}` : '' })`
 		if (!options) return `rgb(${ css_variable })`
 		if (options.opacityValue != undefined) return `rgba(${ css_variable }, ${ options.opacityValue })`
@@ -14,9 +15,12 @@ export function createTailwindColorFunction(name:string, default_value?:string) 
 	}
 }
 
-export function colorToTailwind(token:string, color:CSColor, colors:ColorSuiteColors, use_rgba?:boolean) {
+export function colorToTailwind(token:string, color:CSColor, colors:ColorSuiteColors, use_rgba?:boolean):TailwindColorValue {
 	let resolved_color = isColorAlias(color) ? resolveAlias(color, colors) : color
-	if (isColorAliasResolutionError(resolved_color)) return console.warn(`[Color Suite] ${ token } - ${ resolved_color.message }`) // If we failed to resolve the alias, warn the user and return
+	if (isColorAliasResolutionError(resolved_color)) {
+		console.warn(`[Color Suite] ${ token } - ${ resolved_color.message }`) // If we failed to resolve the alias, warn the user and return black
+		return '#000'
+	}
 
 	if (isColorSolid(resolved_color)) {
 		const { r, g, b, a } = hsvaToRGBA(resolved_color)
@@ -32,4 +36,6 @@ export function colorToTailwind(token:string, color:CSColor, colors:ColorSuiteCo
 		}
 		return tailwind_color_object
 	}
+
+	return '#000'
 }
