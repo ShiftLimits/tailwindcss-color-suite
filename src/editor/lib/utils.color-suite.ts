@@ -75,7 +75,7 @@ export function updateRootVariables(token:string, color:CSColor, colors:ColorSui
 	if (isColorSolid(resolved_color)) {
 		let {r,g,b} = hsvaToRGBA(resolved_color)
 		let value = isColorAlias(color) ? `var(--color-${ color.replace('.', '-') }, ${[r,g,b].join(',')})` : [r,g,b].join(',')
-		setRootVariable(token, value)
+		setRootVariable(`color-${token}`, value)
 	}
 	if (isColorScale(resolved_color)) {
 		let scale_values = colorScaleRGBAValues(resolved_color)
