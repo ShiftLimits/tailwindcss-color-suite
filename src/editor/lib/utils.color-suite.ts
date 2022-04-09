@@ -8,7 +8,7 @@ export function isColorSolid(color:CSColor):color is CSColorSolid {
 	return isHSVAColor(color)
 }
 export function isColorScale(color:CSColor):color is CSColorScale {
-	return typeof color == "object" && color.hue_curve != undefined && color.start != undefined
+	return typeof color == "object" && (color as any).hue_curve != undefined && (color as any).start != undefined
 }
 
 export function isColorAlias(color:CSColor):color is CSColorAlias {
