@@ -44,11 +44,11 @@ Finally, use the Color Suite configuration function in your Tailwind CSS config:
 
 ```js
 // tailwind.config.js
-const { configureColors } = require('tailwindcss-color-suite')
+const { tailwindColors } = require('tailwindcss-color-suite')
 
 module.exports = {
 	theme: {
-		colors: configureColors(),
+		colors: tailwindColors(require('./colors.config.js')),
 		...
 	}
 }
