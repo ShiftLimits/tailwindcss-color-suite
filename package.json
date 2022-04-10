@@ -2,6 +2,7 @@
 	"name": "tailwindcss-color-suite",
 	"version": "0.3.1",
 	"author": "Jeff Schofield <jeff@jeffschofield.com>",
+	"keywords": ["tailwind","color","generator","vite"],
 	"license": "MIT",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
