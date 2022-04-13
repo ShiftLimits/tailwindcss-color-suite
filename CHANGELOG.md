@@ -6,7 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing yet.
+### Added
+- Added metadata to `package.json` to better link this project's relevant URLs
+
+### Fixed
+- Fixed missing `bin` directory in `files` property of `package.json` which causes NPM to throw an error
 
 ## [0.4.0] - 2022-04-09
 
