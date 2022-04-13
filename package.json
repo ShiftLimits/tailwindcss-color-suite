@@ -2,7 +2,17 @@
 	"name": "tailwindcss-color-suite",
 	"version": "0.4.0",
 	"author": "Jeff Schofield <jeff@jeffschofield.com>",
-	"keywords": ["tailwind","color","generator","vite"],
+	"keywords": [
+		"tailwind",
+		"color",
+		"generator",
+		"vite"
+	],
+	"repository": "github:ShiftLimits/tailwindcss-color-suite",
+	"bugs": {
+		"url": "https://github.com/ShiftLimits/tailwindcss-color-suite/issues",
+		"email": "jeff@jeffschofield.com"
+	},
 	"license": "MIT",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
