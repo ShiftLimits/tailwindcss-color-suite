@@ -99,6 +99,10 @@ npx tailwindcss-color-suite export
 
 This command will create a file named `tailwind.colors.config.js` containing the exported color object. You can then copy and paste as the value to the `theme.colors` key in your `tailwind.config.js` file.
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a full list of changes between versions.
+
 ## Contributing
 
 Thank you for checking out my project. Feedback and suggestions are welcome, please use GitHub issues appropriately.
