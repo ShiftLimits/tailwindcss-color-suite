@@ -8,8 +8,9 @@
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
 	"files": [
+		"bin/*",
 		"dist/**/*",
-		"readme.md"
+		"CHANGELOG.md"
 	],
 	"scripts": {
 		"build": "vite build && tsup",
