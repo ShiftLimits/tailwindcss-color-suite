@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Nothing yet.
 
+## [0.5.0] - 2022-04-17
+
+As of this version, Color Suite will generate a default color config using Tailwind's color palette. Previously, no colors were included out of the box and designers were left to build their palette from nothing on their own.
+
+Now you can benefit from the expert work that went in to crafting Tailwind's color palette as well as the flexibility Color Suite gives you to tweak until your heart's content. Using the Tailwind palette as a foundation, it is easier than ever to build out a full palette that's harmonious with your brand colors.
+
+### Added
+- Added utility for curve-fitting a color scale group from Tailwind
+
+### Changed
+- Default color config now includes a palette generated from Tailwind's defaults
+
 ## [0.4.1] - 2022-04-13
 
 ### Added
