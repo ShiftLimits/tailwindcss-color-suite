@@ -4,7 +4,29 @@ import { ColorHSVA, hexToHSVA } from './editor/lib/color'
 import colors from 'tailwindcss/colors'
 import { ColorSuiteColors, CSColorScale } from './types'
 
+export function getDefaultsFromTailwind() {
+	const color_suite_colors:ColorSuiteColors = {}
 
+	for (let key of Object.keys(colors)) {
+		const descriptor = Object.getOwnPropertyDescriptor(colors, key)
+
+		if (descriptor) {
+			if (descriptor.get) {
+				// Attempt to extract alias target
+				const matched = descriptor.get.toString().match(/return\sthis.([a-z0-9_]+)/)
+				if (matched) color_suite_colors[key] = matched[1]
+			} else {
+				const color = descriptor.value
+				if (typeof color == 'object') {
+					const color_config = createDefaultsFromColorGroup(color)
+					if (color_config) color_suite_colors[key] = color_config
+				}
+			}
+		}
+	}
+
+	return color_suite_colors
+}
 
 export function createDefaultsFromColorGroup(group:TailwindColorGroup):CSColorScale|undefined {
 	const middle_key = 500
