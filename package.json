@@ -3,10 +3,12 @@
 	"version": "0.4.1",
 	"author": "Jeff Schofield <jeff@jeffschofield.com>",
 	"keywords": [
+		"vite",
 		"tailwind",
 		"color",
+		"palette",
 		"generator",
-		"vite"
+		"theme"
 	],
 	"repository": "github:ShiftLimits/tailwindcss-color-suite",
 	"bugs": {
