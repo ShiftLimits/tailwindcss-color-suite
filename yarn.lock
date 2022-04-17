@@ -2369,6 +2369,11 @@ find-up@^4.0.0, find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
+fit-curve@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npmjs.org/fit-curve/-/fit-curve-0.2.0.tgz#d48b7ec8775e915d126762868bb99a338bc82d06"
+  integrity sha512-op7ofeL13getbqL5J5ACeNxTlLWzusn4/jjEjSVA1sS7PfXWumdtNITvLuTjSobis+jZzMil2rsJ3Vhw7OxQyQ==
+
 for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
