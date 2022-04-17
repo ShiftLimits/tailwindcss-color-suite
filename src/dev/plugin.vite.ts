@@ -5,8 +5,12 @@ import { writeFileSync, existsSync } from 'fs'
 import { inspect } from 'util'
 import { join } from 'path'
 import { createColorSuiteServer } from '../server'
+import { getDefaultsFromTailwind } from '../utils';
 
 export function colorSuiteDevPlugin():Plugin {
+  const DEFAULTS_WITH_COLORS = Object.assign({}, DEFAULT_COLOR_CONFIG, {
+    colors: getDefaultsFromTailwind()
+  })
   let color_config_path = join(process.cwd(), 'colors.config.js')
   let color_config:ColorSuiteConfig
 
@@ -19,8 +23,8 @@ export function colorSuiteDevPlugin():Plugin {
       throw new Error(`[Color Suite Dev] A color config file exists at '${ color_config_path}' but it could not be required.`)
     } else try {
       // Color config file doesn't exist so we can try to make a new one
-      writeFileSync(color_config_path, `module.exports = ${ inspect(DEFAULT_COLOR_CONFIG, false, Infinity) }`)
-      color_config = DEFAULT_COLOR_CONFIG
+      writeFileSync(color_config_path, `module.exports = ${ inspect(DEFAULTS_WITH_COLORS, false, Infinity) }`)
+      color_config = DEFAULTS_WITH_COLORS
     } catch(e) {
       console.error(e)
       throw new Error(`[Color Suite Dev] Unable to create the color config file at '${ color_config_path}'.`)
@@ -28,7 +32,7 @@ export function colorSuiteDevPlugin():Plugin {
   }
 
   if (!color_config || typeof color_config != "object") throw new Error(`[Color Suite Dev] The color config does not export an object.`)
-  color_config = Object.assign(DEFAULT_COLOR_CONFIG, color_config)
+  color_config = Object.assign(DEFAULTS_WITH_COLORS, color_config)
 
 	return {
 		name: 'tailwindcss-color-suite-dev',
@@ -57,7 +61,7 @@ export function colorSuiteDevPlugin():Plugin {
       if (file.match(/colors\.config\.js/g)) {
         delete require.cache[require.resolve(color_config_path)] // invalidate require
         color_config = require(color_config_path) // re-require
-        color_config = Object.assign(DEFAULT_COLOR_CONFIG, color_config) // make sure we've got all defaults
+        color_config = Object.assign(DEFAULTS_WITH_COLORS, color_config) // make sure we've got all defaults
 
         let config_module = server.moduleGraph.getModuleById(COLOR_CONFIG_ID)
         if(config_module) server.moduleGraph.invalidateModule(config_module)
