@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Nothing yet.
 
+## [0.5.1] - 2022-05-10
+
+### Fixed
+- Fixed chalk not installed as dependency for CLI
+### Changed
+- Remove errant console log
+
 ## [0.5.0] - 2022-04-17
 
 As of this version, Color Suite will generate a default color config using Tailwind's color palette. Previously, no colors were included out of the box and designers were left to build their palette from nothing on their own.

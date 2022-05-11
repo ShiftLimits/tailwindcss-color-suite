@@ -1,6 +1,6 @@
 {
 	"name": "tailwindcss-color-suite",
-	"version": "0.5.0",
+	"version": "0.5.1",
 	"author": "Jeff Schofield <jeff@jeffschofield.com>",
 	"keywords": [
 		"vite",
@@ -67,6 +67,7 @@
 		"vite": "^2.0.0"
 	},
 	"dependencies": {
+		"chalk": "^4.1.2",
 		"fit-curve": "^0.2.0"
 	}
 }
