@@ -11,7 +11,6 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
   const DEFAULTS_WITH_COLORS = Object.assign({}, DEFAULT_COLOR_CONFIG, {
     colors: getDefaultsFromTailwind()
   })
-  console.log(DEFAULTS_WITH_COLORS)
 
   let { config } = Object.assign({ config: 'colors.config.js' }, options)
 
