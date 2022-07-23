@@ -1,12 +1,11 @@
-import { ColorSuiteConfig } from './types'
+import { ColorSuiteConfig, TailwindColors } from './types'
 import { DEFAULT_COLOR_CONFIG } from './constants'
 import { colorToTailwind } from './editor/lib/utils.tailwind'
-import { Config } from 'tailwindcss'
 
-export function configToTailwindColors(color_config:ColorSuiteConfig, use_rgba?:boolean) {
+export function configToTailwindColors(color_config:ColorSuiteConfig, use_rgba?:boolean):TailwindColors {
 	const { include_current, include_transparent, include_inherit } = color_config.settings
 
-	let tailwind_color_config:Required<Config>['theme']['colors'] = {}
+	let tailwind_color_config = {}
 	for (let [token, value] of Object.entries(color_config.colors)) {
 		tailwind_color_config[token] = colorToTailwind(token, value, color_config.colors, use_rgba)
 	}

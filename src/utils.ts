@@ -1,8 +1,7 @@
 import { fitCubic } from 'fit-curve'
-import { TailwindColorGroup } from 'tailwindcss/tailwind-config'
 import { ColorHSVA, hexToHSVA } from './editor/lib/color'
 import colors from 'tailwindcss/colors'
-import { ColorSuiteColors, CSColorScale } from './types'
+import { ColorSuiteColors, CSColorScale, TailwindColors } from './types'
 
 export function getDefaultsFromTailwind() {
 	const color_suite_colors:ColorSuiteColors = {}
@@ -28,7 +27,7 @@ export function getDefaultsFromTailwind() {
 	return color_suite_colors
 }
 
-export function createDefaultsFromColorGroup(group:TailwindColorGroup):CSColorScale|undefined {
+export function createDefaultsFromColorGroup(group:TailwindColors):CSColorScale|undefined {
 	const middle_key = 500
 
 	const error = 50
@@ -38,6 +37,8 @@ export function createDefaultsFromColorGroup(group:TailwindColorGroup):CSColorSc
 
 	// First pass
 	for (let [key, value] of Object.entries(group)) {
+		if (typeof value != 'string') continue // Don't handle deep recursion
+
 		const i = parseInt(key)
 		if (isNaN(i)) {
 			is_scale = false
