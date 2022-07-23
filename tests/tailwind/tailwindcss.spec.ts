@@ -1,7 +1,7 @@
 import tailwindcss from 'tailwindcss'
 import postcss from 'postcss'
 import cssMatcher from 'jest-matcher-css'
-import { TailwindConfig } from 'tailwindcss/tailwind-config'
+import { Config as TailwindConfig } from 'tailwindcss'
 import { tailwindColors } from '../../src'
 import { ColorSuiteColors } from '../../src/types'
 
