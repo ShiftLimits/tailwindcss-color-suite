@@ -6,7 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing yet.
+## Changed
+- Use shadow root to isolate the editor app completely from the host context
+- Add support for Vite 3.0.0 as a peer dependency
+
+## Fixed
+- Fixed any page styles being overridden in development due to the editor app's injected stylesheet
 
 ## [0.5.1] - 2022-05-10
 
