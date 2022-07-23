@@ -6,14 +6,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
         with:
-          node-version: '14.x'
+          version: 6.32.9
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-          cache: 'yarn'
-      - run: yarn install
-      - run: yarn build
-      - run: yarn publish
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
