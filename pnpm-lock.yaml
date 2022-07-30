@@ -19,7 +19,7 @@ specifiers:
   ts-node: ^10.7.0
   tsup: ^5.12.4
   typescript: ^4.7.4
-  vite: ^3.0.2
+  vite: ^3.0.4
   vite-plugin-svg-icons: ^2.0.1
   vue: ^3.2.31
   vue-router: ^4.0.14
@@ -36,7 +36,7 @@ devDependencies:
   '@types/body-parser': 1.19.2
   '@types/jest': 27.5.2
   '@types/node': 16.11.45
-  '@vitejs/plugin-vue': 3.0.1_vite@3.0.2+vue@3.2.37
+  '@vitejs/plugin-vue': 3.0.1_vite@3.0.4+vue@3.2.37
   '@vue/compiler-sfc': 3.2.37
   autoprefixer: 10.4.8_postcss@8.4.14
   body-parser: 1.20.0
@@ -48,8 +48,8 @@ devDependencies:
   ts-node: 10.9.1_kmhzd2ra25a2aeanupbqenugla
   tsup: 5.12.9_ltanrvuoktvcmn7biuqju6k57a
   typescript: 4.7.4
-  vite: 3.0.2
-  vite-plugin-svg-icons: 2.0.1_vite@3.0.2
+  vite: 3.0.4
+  vite-plugin-svg-icons: 2.0.1_vite@3.0.4
   vue: 3.2.37
   vue-router: 4.1.2_vue@3.2.37
   vuedraggable: 4.1.0_vue@3.2.37
@@ -827,14 +827,14 @@ packages:
       '@types/yargs-parser': 21.0.0
     dev: true
 
-  /@vitejs/plugin-vue/3.0.1_vite@3.0.2+vue@3.2.37:
+  /@vitejs/plugin-vue/3.0.1_vite@3.0.4+vue@3.2.37:
     resolution: {integrity: sha512-Ll9JgxG7ONIz/XZv3dssfoMUDu9qAnlJ+km+pBA0teYSXzwPCIzS/e1bmwNYl5dcQGs677D21amgfYAnzMl17A==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.0.2
+      vite: 3.0.4
       vue: 3.2.37
     dev: true
 
@@ -4878,7 +4878,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite-plugin-svg-icons/2.0.1_vite@3.0.2:
+  /vite-plugin-svg-icons/2.0.1_vite@3.0.4:
     resolution: {integrity: sha512-6ktD+DhV6Rz3VtedYvBKKVA2eXF+sAQVaKkKLDSqGUfnhqXl3bj5PPkVTl3VexfTuZy66PmINi8Q6eFnVfRUmA==}
     peerDependencies:
       vite: '>=2.0.0'
@@ -4891,13 +4891,13 @@ packages:
       pathe: 0.2.0
       svg-baker: 1.7.0
       svgo: 2.8.0
-      vite: 3.0.2
+      vite: 3.0.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite/3.0.2:
-    resolution: {integrity: sha512-TAqydxW/w0U5AoL5AsD9DApTvGb2iNbGs3sN4u2VdT1GFkQVUfgUldt+t08TZgi23uIauh1TUOQJALduo9GXqw==}
+  /vite/3.0.4:
+    resolution: {integrity: sha512-NU304nqnBeOx2MkQnskBQxVsa0pRAH5FphokTGmyy8M3oxbvw7qAXts2GORxs+h/2vKsD+osMhZ7An6yK6F1dA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
