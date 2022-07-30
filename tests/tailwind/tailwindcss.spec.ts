@@ -63,7 +63,8 @@ describe('Tailwind CSS color configuration', () => {
 
 			return generateUtilityCSS({
 				theme: {
-					colors: tailwindColors()
+					colors: tailwindColors(),
+					opacity: {}
 				},
 				corePlugins: ['backgroundColor']
 			}).then(result => {
@@ -92,7 +93,8 @@ describe('Tailwind CSS color configuration', () => {
 
 				return generateUtilityCSS({
 					theme: {
-						colors: solid_colors
+						colors: solid_colors,
+						opacity: {}
 					},
 					corePlugins: ['backgroundColor']
 				}).then(result => {
