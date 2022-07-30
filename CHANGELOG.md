@@ -10,14 +10,14 @@ Nothing yet.
 
 ## [0.6.0] - 2022-07-30
 
-## Added
+### Added
 - Add virtual import `virtual:color-suite-colors` for getting an object of resolved colors for use within JavaScript
 
-## Changed
+### Changed
 - Use shadow root to isolate the editor app completely from the host context
 - Add support for Vite 3.0.0 as a peer dependency
 
-## Fixed
+### Fixed
 - Fixed any page styles being overridden in development due to the editor app's injected stylesheet
 
 ## [0.5.1] - 2022-05-10
