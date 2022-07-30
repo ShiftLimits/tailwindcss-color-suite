@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+Nothing yet.
+
+## [0.6.0] - 2022-07-30
+
 ## Added
 - Add virtual import `virtual:color-suite-colors` for getting an object of resolved colors for use within JavaScript
 
