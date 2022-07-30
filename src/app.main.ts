@@ -1,6 +1,7 @@
 import { createColorSuiteApp } from './editor'
 import { EDITOR_APP_MOUNT_ID } from './constants'
 import 'virtual:svg-icons-register'
+
 import editor_stylesheet from './app.main.css?inline'
 
 const { app } = createColorSuiteApp()
@@ -11,6 +12,9 @@ if (shadow) {
 	app_css.textContent = editor_stylesheet
 
 	shadow.appendChild(app_css)
+
+	const icons_root = document.getElementById('__cs_icons__')
+	shadow.appendChild(icons_root)
 
 	const app_root = document.createElement('div')
 	app_root.style.display = 'none'

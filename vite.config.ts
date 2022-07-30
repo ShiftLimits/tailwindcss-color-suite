@@ -12,7 +12,8 @@ export default defineConfig({
   plugins: [
     vue(),
     createSvgIconsPlugin({
-      iconDirs: [resolve(process.cwd(), 'src/editor/assets/icons')]
+      iconDirs: [resolve(process.cwd(), 'src/editor/assets/icons')],
+      customDomId: '__cs_icons__'
     }),
     colorSuiteDevPlugin()
   ],
