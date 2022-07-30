@@ -1,11 +1,11 @@
 import { ModuleNode, Plugin } from 'vite'
 import { ColorSuiteConfig } from '../types'
-import { DEFAULT_COLOR_CONFIG, COLOR_CONFIG_ID, SETTINGS_CONFIG_ID, COLOR_SUITE_ID } from '../constants';
+import { DEFAULT_COLOR_CONFIG, COLOR_CONFIG_ID, SETTINGS_CONFIG_ID, COLOR_SUITE_ID, RESOLVED_COLORS_ID } from '../constants';
 import { writeFileSync, existsSync } from 'fs'
 import { inspect } from 'util'
 import { join } from 'path'
 import { createColorSuiteServer } from '../server'
-import { getDefaultsFromTailwind } from '../utils';
+import { getDefaultsFromTailwind, resolveColorConfig } from '../utils';
 
 export function colorSuiteDevPlugin():Plugin {
   const DEFAULTS_WITH_COLORS = Object.assign({}, DEFAULT_COLOR_CONFIG, {
@@ -47,6 +47,9 @@ export function colorSuiteDevPlugin():Plugin {
 
       // Virtual Import: @tailwindcss-color-suite/settings/config
       if (id == SETTINGS_CONFIG_ID) return SETTINGS_CONFIG_ID
+
+      // Virtual Import: virtual:colors
+      if (id == RESOLVED_COLORS_ID) return RESOLVED_COLORS_ID
     },
     load(id) {
       // Virtual Import: @tailwindcss-color-suite/color/config
@@ -56,6 +59,10 @@ export function colorSuiteDevPlugin():Plugin {
       // Virtual Import: @tailwindcss-color-suite/settings/config
       // Returns the current settings config object
       if (id === SETTINGS_CONFIG_ID) return `export default ${ JSON.stringify(color_config.settings) }`
+
+      // Virtual Import: virtual:colors
+      // Returns the resolved color object
+      if (id === RESOLVED_COLORS_ID) return `export default ${ JSON.stringify(resolveColorConfig(color_config)) }`
     },
     handleHotUpdate({ file, server }) {
       if (file.match(/colors\.config\.js/g)) {
@@ -68,6 +75,9 @@ export function colorSuiteDevPlugin():Plugin {
 
         let settings_module = server.moduleGraph.getModuleById(SETTINGS_CONFIG_ID)
         if(settings_module) server.moduleGraph.invalidateModule(settings_module)
+
+        let resolved_colors_module = server.moduleGraph.getModuleById(RESOLVED_COLORS_ID)
+        if(resolved_colors_module) server.moduleGraph.invalidateModule(resolved_colors_module)
 
         server.ws.send({
           type: 'custom',

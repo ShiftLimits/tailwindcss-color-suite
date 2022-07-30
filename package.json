@@ -27,12 +27,16 @@
 		},
 		"./app": {
 			"import": "./dist/app.main/index.js"
+		},
+    "./client": {
+      "types": "./client.d.ts"
     }
 	},
 	"files": [
 		"bin/*",
 		"dist/**/*",
-		"CHANGELOG.md"
+		"CHANGELOG.md",
+    "client.d.ts"
 	],
 	"scripts": {
 		"build": "vite build && tsup",

@@ -46,6 +46,8 @@ export interface ColorSuiteConfig {
 	settings: ColorSuiteSettings
 }
 
+export type ColorSuiteResolvedColors = {[key: string]: string | {[key: string]: string }}
+
 // Union utils by SE12938683 from https://stackoverflow.com/questions/52931116/decompose-a-typescript-union-type-into-specific-types
 export type UnionToParm<U> = U extends any ? (k: U) => void : never
 export type UnionToSect<U> = UnionToParm<U> extends ((k: infer I) => void) ? I : never

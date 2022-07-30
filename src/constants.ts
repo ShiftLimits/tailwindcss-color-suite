@@ -8,6 +8,9 @@ export const COLOR_SUITE_PATH = `/${COLOR_SUITE_ID}`
 export const COLOR_CONFIG_ID = `${COLOR_SUITE_ID}/colors/config`
 export const COLOR_CONFIG_PATH = `/${COLOR_CONFIG_ID}`
 
+// Resolved colors
+export const RESOLVED_COLORS_ID = `virtual:color-suite-colors`
+
 // Settings config
 export const SETTINGS_CONFIG_ID = `${COLOR_SUITE_ID}/settings/config`
 export const SETTINGS_CONFIG_PATH = `/${SETTINGS_CONFIG_ID}`

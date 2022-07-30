@@ -89,6 +89,21 @@ Aliases can also refer to other aliases, but make sure references are one-direct
 
 If you delete or rename a color that is referred to by an alias it will display an error and become unavailable until reassigned.
 
+## Programmatic usage
+
+You can import an object of your resolved colors for use in JavaScript using the virtual import `virtual:color-suite-colors`.
+
+```ts
+import colors from 'virtual:color-suite-colors'
+```
+
+### TypeScript Support
+
+```ts
+// env.d.ts
+/// <reference types="tailwindcss-color-suite/client" />
+```
+
 ## Exporting Your Palette
 
 If you would like to remove Color Suite but keep your palette, you can export the object for pasting in to your Tailwind config. You can use the following command in the same directory as your color config file:

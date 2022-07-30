@@ -1,7 +1,8 @@
 import { fitCubic } from 'fit-curve'
 import { ColorHSVA, hexToHSVA } from './editor/lib/color'
 import colors from 'tailwindcss/colors'
-import { ColorSuiteColors, CSColorScale, TailwindColors } from './types'
+import { ColorSuiteColors, ColorSuiteConfig, ColorSuiteResolvedColors, CSColorScale, TailwindColors } from './types'
+import { colorToTailwind } from './editor/lib/utils.tailwind'
 
 export function getDefaultsFromTailwind() {
 	const color_suite_colors:ColorSuiteColors = {}
@@ -152,6 +153,25 @@ export function createDefaultsFromColorGroup(group:TailwindColors):CSColorScale|
 		end: 900,
 		steps: 18
 	}
+}
+
+export function resolveColorConfig(color_config:ColorSuiteConfig):ColorSuiteResolvedColors {
+	const { include_current, include_transparent, include_inherit } = color_config.settings
+
+	let tailwind_color_config:ColorSuiteResolvedColors = {}
+	for (let [token, value] of Object.entries(color_config.colors)) {
+		tailwind_color_config[token] = {}
+		const scale = colorToTailwind(token, value, color_config.colors)
+		for (let [degree, colorFunction] of Object.entries(scale)) {
+			tailwind_color_config[token][degree] = colorFunction()
+		}
+	}
+
+  if (include_transparent) tailwind_color_config['transparent'] = 'transparent'
+  if (include_current) tailwind_color_config['current'] = 'currentColor'
+  if (include_inherit) tailwind_color_config['inherit'] = 'inherit'
+
+	return tailwind_color_config
 }
 
 function vectorLength(v:number[]) {

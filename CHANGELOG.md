@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## Added
+- Add virtual import `virtual:color-suite-colors` for getting an object of resolved colors for use within JavaScript
+
 ## Changed
 - Use shadow root to isolate the editor app completely from the host context
 - Add support for Vite 3.0.0 as a peer dependency
