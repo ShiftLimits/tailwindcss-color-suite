@@ -14,7 +14,7 @@ if (shadow) {
 	shadow.appendChild(app_css)
 
 	const icons_root = document.getElementById('__cs_icons__')
-	shadow.appendChild(icons_root)
+	if(icons_root) shadow.appendChild(icons_root)
 
 	const app_root = document.createElement('div')
 	app_root.style.display = 'none'
