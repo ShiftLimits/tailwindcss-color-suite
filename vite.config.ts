@@ -28,7 +28,10 @@ export default defineConfig({
         dir: './dist/app.main',
         entryFileNames: 'index.js'
       },
-      external: ['@tailwindcss-color-suite/colors/config', '@tailwindcss-color-suite/settings/config'],
+      external: [
+        'virtual:color-suite/config/colors',
+        'virtual:color-suite/config/settings'
+      ],
     }
   }
 })

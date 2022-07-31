@@ -5,8 +5,8 @@ import { ColorSuiteColors, CSColor } from '../../../types'
 import { CreateColorForm, UpdateColorForm } from './forms'
 import { COLOR_SUITE_ID } from '../../../constants'
 import { color_store } from './store'
-import colors_config from '@tailwindcss-color-suite/colors/config'
 import { updateRootVariables } from '../../lib/utils.color-suite'
+import colors_config from 'virtual:color-suite/config/colors'
 
 const color_service_key = Symbol('__COLOR_SERVICE__')
 
@@ -27,8 +27,8 @@ export function createColorService(store:Store<any>) {
 		}
 	})
 
-	for (let [token, value] of Object.entries<CSColor>(colors_config)) {
-		updateRootVariables(token, value, colors_config)
+	for (let [token, value] of Object.entries<CSColor>(colors_config as ColorSuiteColors)) {
+		updateRootVariables(token, value, colors_config as ColorSuiteColors)
 	}
 
 	if (import.meta.hot) {

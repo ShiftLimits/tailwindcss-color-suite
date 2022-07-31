@@ -1,12 +1,12 @@
 import { Module } from 'vuex'
 import { ColorSuiteSettings } from '../../../types'
 import { UpdateSettingsForm } from './forms'
-import settings_config from '@tailwindcss-color-suite/settings/config'
+import settings_config from 'virtual:color-suite/config/settings'
 
 export const settings_store:Module<ColorSuiteSettings, any> = {
 	namespaced: true,
 	state() {
-		return settings_config
+		return settings_config as ColorSuiteSettings
 	},
 	mutations: {
 		update(state, form:UpdateSettingsForm) {

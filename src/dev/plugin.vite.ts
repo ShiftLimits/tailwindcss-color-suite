@@ -1,6 +1,6 @@
 import { ModuleNode, Plugin } from 'vite'
 import { ColorSuiteConfig } from '../types'
-import { DEFAULT_COLOR_CONFIG, COLOR_CONFIG_ID, SETTINGS_CONFIG_ID, COLOR_SUITE_ID, RESOLVED_COLORS_ID } from '../constants';
+import { DEFAULT_COLOR_CONFIG, COLOR_CONFIG_ID, SETTINGS_CONFIG_ID, COLOR_SUITE_ID, RESOLVED_COLORS_ID, PREFIXED_COLOR_CONFIG_ID, PREFIXED_SETTINGS_CONFIG_ID, PREFIXED_RESOLVED_COLORS_ID } from '../constants';
 import { writeFileSync, existsSync } from 'fs'
 import { inspect } from 'util'
 import { join } from 'path'
@@ -42,27 +42,27 @@ export function colorSuiteDevPlugin():Plugin {
       return createColorSuiteServer(server, color_config, color_config_path)
     },
 		resolveId(id) {
-      // Virtual Import: @tailwindcss-color-suite/color/config
-      if (id == COLOR_CONFIG_ID) return COLOR_CONFIG_ID
+      // Virtual Import: Config colors object
+      if (id == COLOR_CONFIG_ID) return PREFIXED_COLOR_CONFIG_ID
 
-      // Virtual Import: @tailwindcss-color-suite/settings/config
-      if (id == SETTINGS_CONFIG_ID) return SETTINGS_CONFIG_ID
+      // Virtual Import: Config settings object
+      if (id == SETTINGS_CONFIG_ID) return PREFIXED_SETTINGS_CONFIG_ID
 
-      // Virtual Import: virtual:colors
-      if (id == RESOLVED_COLORS_ID) return RESOLVED_COLORS_ID
+      // Virtual Import: Colors object resolved to CSS values
+      if (id == RESOLVED_COLORS_ID) return PREFIXED_RESOLVED_COLORS_ID
     },
     load(id) {
-      // Virtual Import: @tailwindcss-color-suite/color/config
+      // Virtual Import: Config colors object
       // Returns the current color config object
-      if (id === COLOR_CONFIG_ID) return `export default ${ JSON.stringify(color_config.colors) }`
+      if (id === PREFIXED_COLOR_CONFIG_ID) return `export default ${ JSON.stringify(color_config.colors) }`
 
-      // Virtual Import: @tailwindcss-color-suite/settings/config
+      // Virtual Import: Config settings object
       // Returns the current settings config object
-      if (id === SETTINGS_CONFIG_ID) return `export default ${ JSON.stringify(color_config.settings) }`
+      if (id === PREFIXED_SETTINGS_CONFIG_ID) return `export default ${ JSON.stringify(color_config.settings) }`
 
-      // Virtual Import: virtual:colors
+      // Virtual Import: Colors object resolved to CSS values
       // Returns the resolved color object
-      if (id === RESOLVED_COLORS_ID) return `export default ${ JSON.stringify(resolveColorConfig(color_config)) }`
+      if (id === PREFIXED_RESOLVED_COLORS_ID) return `export default ${ JSON.stringify(resolveColorConfig(color_config)) }`
     },
     handleHotUpdate({ file, server }) {
       if (file.match(/colors\.config\.js/g)) {

@@ -3,7 +3,7 @@ import { ColorSuiteColors } from '../../../types'
 import { CreateColorForm, UpdateColorForm } from './forms'
 import { hydrateColorConfig, isColorScale, convertPoints } from '../../lib/utils.color-suite'
 import { reactiveCloneDeep } from '../../lib/utils'
-import colors_config from '@tailwindcss-color-suite/colors/config'
+import colors_config from 'virtual:color-suite/config/colors'
 
 interface UpdatePayload {
 	token: string
@@ -16,7 +16,7 @@ interface DeletePayload {
 export const color_store:Module<ColorSuiteColors, any> = {
 	namespaced: true,
 	state() {
-		return hydrateColorConfig(colors_config)
+		return hydrateColorConfig(colors_config as ColorSuiteColors)
 	},
 	mutations: {
 		create(state, form:CreateColorForm) {
