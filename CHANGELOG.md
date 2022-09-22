@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - **Breaking** Renamed virtual import for resolved colors to `virtual:color-suite/colors` for convention
+- Color Scales now default to start at 50, end at 900 with step intervals of 50
+- Color Scales have better default saturation and value curves
 
 ### Fixed
 - Fix compatibility issues with Vite 3.0.0 and above
