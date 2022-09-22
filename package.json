@@ -26,7 +26,8 @@
 			"types": "./dist/index.d.ts"
 		},
 		"./app": {
-			"import": "./dist/app.main/index.js"
+			"require": "./dist/app.main/index.js",
+			"import": "./dist/app.main/index.mjs"
 		},
     "./client": {
       "types": "./client.d.ts"

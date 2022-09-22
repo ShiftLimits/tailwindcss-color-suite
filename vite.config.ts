@@ -21,13 +21,21 @@ export default defineConfig({
     lib: {
       entry: './src/app.main.ts',
       name: 'ColorSuiteEditorApp',
-      formats: ['es']
+      formats: ['es', 'cjs']
     },
     rollupOptions: {
-      output: {
-        dir: './dist/app.main',
-        entryFileNames: 'index.js'
-      },
+      output: [
+        {
+          format: 'es',
+          dir: './dist/app.main',
+          entryFileNames: 'index.mjs'
+        },
+        {
+          format: 'cjs',
+          dir: './dist/app.main',
+          entryFileNames: 'index.js'
+        }
+      ],
       external: [
         'virtual:color-suite/config/colors',
         'virtual:color-suite/config/settings'
