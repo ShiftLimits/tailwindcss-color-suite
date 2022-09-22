@@ -6,7 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing yet.
+### Added
+- Add "offset" value the hue component in a color scale, allowing for scales that need to cross red like purple to yellow
+- Add type declarations for color suite config virtual imports, `virtual:color-suite/config/colors` & `virtual:color-suite/config/settings`
+
+### Changed
+- **Breaking** Renamed virtual import for resolved colors to `virtual:color-suite/colors` for convention
+
+### Fixed
+- Fix compatibility issues with Vite 3.0.0 and above
 
 ## [0.6.0] - 2022-07-30
 
