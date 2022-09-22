@@ -1,14 +1,11 @@
 ﻿declare module 'virtual:color-suite/colors' {
-  const colors: {[key: string]: string | {[key: string]: string }}
-  export default colors
+  export const colors: {[key: string]: string | {[key: string]: string }}
 }
 
 declare module 'virtual:color-suite/config/colors' {
-  const colors: {[key: string]: string | {[key: string]: string }}
-  export default colors
+  export const colors: {[key: string]: string | {[key: string]: string }}
 }
 
 declare module 'virtual:color-suite/config/settings' {
-  const settings: {[key: string]: any}
-  export default settings
+  export const settings: {[key: string]: any}
 }

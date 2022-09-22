@@ -1,7 +1,7 @@
 import { Module } from 'vuex'
 import { ColorSuiteSettings } from '../../../types'
 import { UpdateSettingsForm } from './forms'
-import settings_config from 'virtual:color-suite/config/settings'
+import { settings as settings_config } from 'virtual:color-suite/config/settings'
 
 export const settings_store:Module<ColorSuiteSettings, any> = {
 	namespaced: true,

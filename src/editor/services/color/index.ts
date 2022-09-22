@@ -6,7 +6,7 @@ import { CreateColorForm, UpdateColorForm } from './forms'
 import { COLOR_SUITE_ID } from '../../../constants'
 import { color_store } from './store'
 import { updateRootVariables } from '../../lib/utils.color-suite'
-import colors_config from 'virtual:color-suite/config/colors'
+import { colors as colors_config } from 'virtual:color-suite/config/colors'
 
 const color_service_key = Symbol('__COLOR_SERVICE__')
 

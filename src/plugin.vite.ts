@@ -76,15 +76,15 @@ export function colorSuitePlugin(options:{ config?:string } = {}):Plugin {
 
       // Virtual Import: Config colors object
       // Returns the current color config object
-      if (id === PREFIXED_COLOR_CONFIG_ID) return `export default ${ JSON.stringify(color_config.colors) }`
+      if (id === PREFIXED_COLOR_CONFIG_ID) return `export const colors = ${ JSON.stringify(color_config.colors) }`
 
       // Virtual Import: Config settings object
       // Returns the current settings config object
-      if (id === PREFIXED_SETTINGS_CONFIG_ID) return `export default ${ JSON.stringify(color_config.settings) }`
+      if (id === PREFIXED_SETTINGS_CONFIG_ID) return `export const settings = ${ JSON.stringify(color_config.settings) }`
 
       // Virtual Import: Colors object resolved to CSS values
       // Returns the resolved color object
-      if (id === PREFIXED_RESOLVED_COLORS_ID) return `export default ${ JSON.stringify(resolveColorConfig(color_config)) }`
+      if (id === PREFIXED_RESOLVED_COLORS_ID) return `export const colors = ${ JSON.stringify(resolveColorConfig(color_config)) }`
     },
     handleHotUpdate({ file, server }) {
       if (file.match(/colors\.config\.js/g)) {

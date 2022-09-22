@@ -3,7 +3,7 @@ import { ColorSuiteColors } from '../../../types'
 import { CreateColorForm, UpdateColorForm } from './forms'
 import { hydrateColorConfig, isColorScale, convertPoints } from '../../lib/utils.color-suite'
 import { reactiveCloneDeep } from '../../lib/utils'
-import colors_config from 'virtual:color-suite/config/colors'
+import { colors as colors_config } from 'virtual:color-suite/config/colors'
 
 interface UpdatePayload {
 	token: string
