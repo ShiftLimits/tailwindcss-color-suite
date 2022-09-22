@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+Nothing yet.
+
+## [0.7.0] - 2022-09-22
+
 ### Added
 - Add "offset" value the hue component in a color scale, allowing for scales that need to cross red like purple to yellow
 - Add type declarations for color suite config virtual imports, `virtual:color-suite/config/colors` & `virtual:color-suite/config/settings`
