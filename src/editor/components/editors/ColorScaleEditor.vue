@@ -113,8 +113,28 @@
 					hue_offset: 0,
 					use_hue_curve: false,
 					hue_curve: { start: 0, mid: 0, end: 0, controls: [  new Point(0, 0.15), new Point(0, -0.15), new Point(0, 0.15), new Point(0, -0.15) ] },
-					saturation_curve: { start: 0, mid: 1, end: 1, controls: [  new Point(0, 0.15), new Point(0, -0.15), new Point(0, 0.15), new Point(0, -0.15) ] },
-					value_curve: { start: 1, mid: 1, end: 0, controls: [  new Point(0, 0.15), new Point(0, -0.15), new Point(0, 0.15), new Point(0, -0.15) ] },
+					saturation_curve: {
+						start: 0.0712608397302399,
+						mid: 0.8939969161958811,
+						end: 0.9710982667456752,
+						controls: [
+							new Point(0.3005780148198412, 0.17693278356613767),
+							new Point(-0.23085268257000924, -0.1309309904379728),
+							new Point(0.08255608502161456, 0.04682271766663773),
+							new Point(0, -0.15)
+						]
+					},
+					value_curve: {
+						start: 0.9884393360986335,
+						mid: 0.8920399545058777,
+						end: 0,
+						controls: [
+							new Point(0, 0.15),
+							new Point(0.07047001579825886, -0.13241592379088396),
+							new Point(-0.0828818295022945, 0.1557382085799962),
+							new Point(0.15603926830139547, -0.10184859195044504)
+						]
+					},
 
 					start: 50,
 					end: 900,
