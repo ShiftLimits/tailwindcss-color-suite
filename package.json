@@ -29,15 +29,15 @@
 			"require": "./dist/app.main/index.js",
 			"import": "./dist/app.main/index.mjs"
 		},
-    "./client": {
-      "types": "./client.d.ts"
-    }
+		"./client": {
+			"types": "./client.d.ts"
+		}
 	},
 	"files": [
 		"bin/*",
 		"dist/**/*",
 		"CHANGELOG.md",
-    "client.d.ts"
+		"client.d.ts"
 	],
 	"scripts": {
 		"build": "vite build && tsup",
