@@ -116,9 +116,9 @@
 					saturation_curve: { start: 0, mid: 1, end: 1, controls: [  new Point(0, 0.15), new Point(0, -0.15), new Point(0, 0.15), new Point(0, -0.15) ] },
 					value_curve: { start: 1, mid: 1, end: 0, controls: [  new Point(0, 0.15), new Point(0, -0.15), new Point(0, 0.15), new Point(0, -0.15) ] },
 
-					start: 0,
-					end: 1000,
-					steps: 11,
+					start: 50,
+					end: 900,
+					steps: 18,
 				}
 			}
 			const data = reactive<{ token:string, value:CSColorScale }>(DEFAULT_DATA)
