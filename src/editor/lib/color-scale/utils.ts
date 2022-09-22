@@ -15,7 +15,7 @@ export function colorScaleTokens(color_scale:CSColorScale) {
 }
 
 export function samplePanelColorScale(color_scale:CSColorScale, y:number):ColorHSV {
-	let hue = sampleComponentCurve(color_scale.hue_curve , y, 360)
+	let hue = (sampleComponentCurve(color_scale.hue_curve , y, 360) + (color_scale.hue_offset ?? 0)) % 360
 	let saturation = sampleComponentCurve(color_scale.saturation_curve, y)
 	let value = sampleComponentCurve(color_scale.value_curve, y)
 

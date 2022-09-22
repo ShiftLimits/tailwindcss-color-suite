@@ -1,5 +1,9 @@
 import { glsl } from '../../glsl'
 
+export const CommonCurveUniforms = glsl`
+uniform float hue_offset;
+`
+
 export const HueUniforms = glsl`
 uniform vec2 start_hue_curve_points[4];
 uniform vec2 end_hue_curve_points[4];

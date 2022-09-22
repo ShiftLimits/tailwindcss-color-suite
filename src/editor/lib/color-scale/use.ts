@@ -9,7 +9,7 @@ export function useHueCurveShader(canvas:Ref<HTMLCanvasElement>, scale:CSColorSc
 	watch(scale, () => {
 		const { start: saturation_start_points, end: saturation_end_points } = componentCurveToBezierPoints(scale.saturation_curve)
 		const { start: value_start_points, end: value_end_points } = componentCurveToBezierPoints(scale.value_curve)
-		if (shader) shader.render(saturation_start_points, saturation_end_points, value_start_points, value_end_points)
+		if (shader) shader.render(saturation_start_points, saturation_end_points, value_start_points, value_end_points, scale.hue_offset/360)
 	}, { immediate: true })
 
 	watch(canvas, (new_canvas) => {
@@ -19,7 +19,7 @@ export function useHueCurveShader(canvas:Ref<HTMLCanvasElement>, scale:CSColorSc
 
 			const { start: saturation_start_points, end: saturation_end_points } = componentCurveToBezierPoints(scale.saturation_curve)
 			const { start: value_start_points, end: value_end_points } = componentCurveToBezierPoints(scale.value_curve)
-			shader.render(saturation_start_points, saturation_end_points, value_start_points, value_end_points)
+			shader.render(saturation_start_points, saturation_end_points, value_start_points, value_end_points, scale.hue_offset/360)
 		}
 	}, {
 		flush: 'post',
@@ -47,7 +47,7 @@ export function useSaturationCurveShader(canvas:Ref<HTMLCanvasElement>, scale:CS
 	watch(scale, () => {
 		const { start: hue_start_points, end: hue_end_points } = componentCurveToBezierPoints(scale.hue_curve)
 		const { start: value_start_points, end: value_end_points } = componentCurveToBezierPoints(scale.value_curve)
-		if (shader) shader.render(hue_start_points, hue_end_points, value_start_points, value_end_points)
+		if (shader) shader.render(hue_start_points, hue_end_points, value_start_points, value_end_points, scale.hue_offset/360)
 	}, { immediate: true })
 
 	onMounted(() => {
@@ -59,7 +59,7 @@ export function useSaturationCurveShader(canvas:Ref<HTMLCanvasElement>, scale:CS
 
 				const { start: hue_start_points, end: hue_end_points } = componentCurveToBezierPoints(scale.hue_curve)
 				const { start: value_start_points, end: value_end_points } = componentCurveToBezierPoints(scale.value_curve)
-				shader.render(hue_start_points, hue_end_points, value_start_points, value_end_points)
+				shader.render(hue_start_points, hue_end_points, value_start_points, value_end_points, scale.hue_offset/360)
 			}
 		}, { immediate: true })
 	})
@@ -75,7 +75,7 @@ export function useValueCurveShader(canvas:Ref<HTMLCanvasElement>, scale:CSColor
 	watch(scale, () => {
 		const { start: hue_start_points, end: hue_end_points } = componentCurveToBezierPoints(scale.hue_curve)
 		const { start: saturation_start_points, end: saturation_end_points } = componentCurveToBezierPoints(scale.saturation_curve)
-		if (shader) shader.render(hue_start_points, hue_end_points, saturation_start_points, saturation_end_points)
+		if (shader) shader.render(hue_start_points, hue_end_points, saturation_start_points, saturation_end_points, scale.hue_offset/360)
 	}, { immediate: true })
 
 	onMounted(() => {
@@ -87,7 +87,7 @@ export function useValueCurveShader(canvas:Ref<HTMLCanvasElement>, scale:CSColor
 
 				const { start: hue_start_points, end: hue_end_points } = componentCurveToBezierPoints(scale.hue_curve)
 				const { start: saturation_start_points, end: saturation_end_points } = componentCurveToBezierPoints(scale.saturation_curve)
-				shader.render(hue_start_points, hue_end_points, saturation_start_points, saturation_end_points)
+				shader.render(hue_start_points, hue_end_points, saturation_start_points, saturation_end_points, scale.hue_offset/360)
 			}
 		}, { immediate: true })
 	})

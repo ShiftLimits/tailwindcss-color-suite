@@ -14,6 +14,7 @@ export interface CSComponentCurve {
 export type CSColorSolid = ColorHSVA // Store Solid as HSVA representation
 
 export interface CSColorScale {
+	hue_offset:number
 	use_hue_curve:boolean
 	hue_curve:CSComponentCurve
 	saturation_curve:CSComponentCurve

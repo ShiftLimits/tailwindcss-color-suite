@@ -145,6 +145,7 @@ export function createDefaultsFromColorGroup(group:TailwindColors):CSColorScale|
 	}
 
 	return {
+		hue_offset: 0,
 		use_hue_curve: true,
 		hue_curve: hue_curve as any,
 		saturation_curve: saturation_curve as any,

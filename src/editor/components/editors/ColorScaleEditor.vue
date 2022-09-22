@@ -22,10 +22,16 @@
 				<div class="__cs-block __cs-space-y-2">
 					<div class="__cs-flex __cs-space-x-2">
 						<div class="__cs-font-medium __cs-flex-grow">{{ use_hue_curve ? 'Hue Curve' : 'Hue' }}</div>
-						<label class="__cs-flex __cs-items-center __cs-space-x-2">
-							<toggle v-model="use_hue_curve" />
-							<div>Use curve</div>
-						</label>
+						<div class="__cs-flex __cs-gap-1/2 __cs-divide-x __cs-divide-neutral-600">
+							<label class="__cs-flex __cs-items-center __cs-space-x-2 __cs-px-2">
+								<text-input v-model.number="hue_offset" class="__cs-w-10" />
+								<div>Offset</div>
+							</label>
+							<label class="__cs-flex __cs-items-center __cs-space-x-2 __cs-px-2">
+								<toggle v-model="use_hue_curve" />
+								<div>Use curve</div>
+							</label>
+						</div>
 					</div>
 					<component-curve v-if="use_hue_curve" v-model="scale.hue_curve" :scale-steps="scale_steps" class="__cs-p-1 __cs-rounded-md __cs-bg-black">
 						<div class="__cs-w-full __cs-rounded-sm __cs-relative __cs-bg-transparency-grid" style="padding-bottom: 100%;">
@@ -104,6 +110,7 @@
 			const DEFAULT_DATA:{ token:string, value:CSColorScale } = {
 				token: '',
 				value: {
+					hue_offset: 0,
 					use_hue_curve: false,
 					hue_curve: { start: 0, mid: 0, end: 0, controls: [  new Point(0, 0.15), new Point(0, -0.15), new Point(0, 0.15), new Point(0, -0.15) ] },
 					saturation_curve: { start: 0, mid: 1, end: 1, controls: [  new Point(0, 0.15), new Point(0, -0.15), new Point(0, 0.15), new Point(0, -0.15) ] },
@@ -123,7 +130,8 @@
 					syncing = true
 					if (!new_value.token) new_value.token = DEFAULT_DATA.token
 					if (!new_value.value) new_value.value = DEFAULT_DATA.value
-					Object.assign(data, new_value)
+					data.token = new_value.token
+					Object.assign(data.value, new_value.value)
 					nextTick(() => syncing = false)
 				}
 			}, { flush, immediate: true })
@@ -133,6 +141,7 @@
 				}
 			}, { flush, immediate: false })
 
+			const hue_offset = toRef(data.value, 'hue_offset', 0)
 			const use_hue_curve = toRef(data.value, 'use_hue_curve')
 			const hue_slider_background = ref()
 			const hue_curve_background = ref()
@@ -155,12 +164,12 @@
 				}
 			}, { immediate: true })
 
-			const base_color = Color({ h: data.value.hue_curve.mid * 360, s: data.value.saturation_curve.mid * 100, v: data.value.value_curve.mid * 100 })
+			const base_color = Color({ h: (data.value.hue_curve.mid * 360 + data.value.hue_offset) % 360, s: data.value.saturation_curve.mid * 100, v: data.value.value_curve.mid * 100 })
 			const base_hex = computed({
 				get: () => base_color.hex,
 				set(new_hex) {
 					let { h, s, v } = hexToHSVA(new_hex)
-					h /= 360
+					h = ((h + data.value.hue_offset) % 360) / 360
 					s /= 100
 					v /= 100
 
@@ -174,7 +183,7 @@
 					}
 				}
 			})
-			watch(() => data.value.hue_curve.mid, () => base_color.h = data.value.hue_curve.mid * 360)
+			watch(() => data.value.hue_curve.mid, () => base_color.h = (data.value.hue_curve.mid * 360 + data.value.hue_offset) % 360)
 			watch(() => data.value.saturation_curve.mid, () => base_color.s = data.value.saturation_curve.mid * 100)
 			watch(() => data.value.value_curve.mid, () => base_color.v = data.value.value_curve.mid * 100)
 
@@ -201,6 +210,7 @@
 				scale: data.value,
 				scale_colors,
 				scale_steps,
+				hue_offset,
 				use_hue_curve,
 				hue_slider_value
 			}

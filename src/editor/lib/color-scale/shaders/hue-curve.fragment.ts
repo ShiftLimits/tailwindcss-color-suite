@@ -1,12 +1,13 @@
 import { glsl } from "../../glsl"
 import { ColorConversionUtils, CommonUtils, BezierUtils, CommonUniforms } from "../../shaders/utils.fragment"
-import { HueUniforms, SaturationUniforms, ValueUniforms } from "./uniforms.fragment"
+import { CommonCurveUniforms, HueUniforms, SaturationUniforms, ValueUniforms } from "./uniforms.fragment"
 
 export default glsl`#version 300 es
 
 precision highp float;
 
 ${ CommonUniforms }
+${ CommonCurveUniforms }
 ${ SaturationUniforms }
 ${ ValueUniforms }
 out vec4 color;
@@ -34,7 +35,7 @@ void main() {
 	color = vec4(
 		hsv2rgb(
 			vec3(
-				uv.x, // hue
+				mod(uv.x + hue_offset, 1.0), // hue
 				saturation, // saturation
 				value // value
 			)
